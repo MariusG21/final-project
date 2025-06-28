@@ -1,0 +1,22 @@
+.book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 1rem;
+  gap: 1rem;
+  & > * {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      font-size: 2rem;
+      color: #c6c6c6;
+    }
+  }
+}
+.book-rating-stars {
+  width: 10rem;
+}

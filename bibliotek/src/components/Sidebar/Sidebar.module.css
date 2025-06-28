@@ -1,0 +1,20 @@
+.sidebar {
+  position: fixed;
+  top: 9.25rem;
+  left: 0;
+  bottom: 0;
+  width: 24rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  border-right: 0.1rem solid #101852;
+  background-color: #0e0c49;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

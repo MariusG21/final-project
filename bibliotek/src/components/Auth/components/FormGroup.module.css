@@ -1,0 +1,46 @@
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  label {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #2261ed;
+  }
+  input {
+    width: 100%;
+    height: 5rem;
+    padding: 0 4rem 0 1.6rem;
+    border: 0.2rem solid transparent;
+    border-radius: 1.6rem;
+    background-color: #171659;
+    color: #fff;
+    font-weight: 500;
+    transition: border-color 150ms, background-color 150ms;
+    &::placeholder {
+      color: #31426d;
+    }
+    &:hover {
+      border-color: #1457e8;
+    }
+    &:focus {
+      background-color: #040332;
+      border-color: #2261ed;
+    }
+  }
+}
+.error-icon {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: 1.6rem;
+  top: 3.6rem;
+}
+.error-message {
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}

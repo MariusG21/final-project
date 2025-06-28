@@ -1,0 +1,22 @@
+.book-actions {
+  display: flex;
+  justify-content: space-evenly;
+  & > * {
+    width: 13rem;
+    height: 4rem;
+  }
+}
+.add-to-wishlist-button {
+  border: 0.2rem solid #ad61ff;
+  border-radius: 1.5rem;
+  background-color: #e5ccff;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0rem 0rem 6rem 0rem rgba(152, 17, 255, 0.5);
+  }
+  &:active {
+    transform: scale(0.99);
+    box-shadow: 0rem 0rem 2rem 0rem rgba(152, 17, 255, 0.5);
+  }
+}

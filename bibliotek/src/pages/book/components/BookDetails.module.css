@@ -1,0 +1,11 @@
+.book-details-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  & > * {
+    flex: 1;
+    min-width: 31rem;
+  }
+}

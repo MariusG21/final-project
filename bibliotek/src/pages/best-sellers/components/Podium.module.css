@@ -1,0 +1,9 @@
+.podium {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  height: 100%;
+}
+.podium > :nth-child(2) {
+  order: -1;
+}

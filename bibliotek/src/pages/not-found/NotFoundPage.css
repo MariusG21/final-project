@@ -1,0 +1,18 @@
+.not-found-message {
+  margin-top: 20rem;
+  text-align: center;
+  color: #ababab;
+}
+.go-home-message {
+  text-align: center;
+  margin-top: 1rem;
+  color: #fff;
+}
+.home-link {
+  text-decoration: underline;
+  color: #145af0;
+  transition: color 150ms;
+  &:hover {
+    color: #4d82f4;
+  }
+}

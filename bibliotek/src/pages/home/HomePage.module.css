@@ -1,0 +1,10 @@
+.home-page {
+  margin-top: 9.25rem;
+  padding: 2rem 2rem 2rem 26rem;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .home-page {
+    padding-left: 2rem;
+  }
+}

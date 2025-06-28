@@ -1,0 +1,20 @@
+.social-links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  a {
+    width: 4rem;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    border: 0.2rem solid #182787;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: background-color 150ms;
+    &:hover {
+      background-color: #182787;
+    }
+  }
+}

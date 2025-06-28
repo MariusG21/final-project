@@ -1,0 +1,19 @@
+.auth-footer {
+  display: flex;
+  align-self: center;
+  gap: 1rem;
+  margin-top: 6rem;
+  p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    text-shadow: none;
+    color: #fff;
+  }
+  a {
+    color: #145af0;
+    text-decoration: underline;
+    &:hover {
+      color: #3f78f1;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.second-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+  align-items: center;
+}
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-shadow: 0 0 1.6rem #1d76fc;
+  color: #fff;
+  letter-spacing: 0.1rem;
+}

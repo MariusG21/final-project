@@ -1,0 +1,4 @@
+.separator-line {
+  background-image: radial-gradient(#38a0ff, #1f289a, #111265, transparent);
+  height: 0.2rem;
+}

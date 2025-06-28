@@ -1,0 +1,16 @@
+.top-links {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 2rem;
+  background-color: #0d0c3e;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #324f8f;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  transition: color 150ms;
+}
+.top-links *:hover {
+  color: #fff;
+}

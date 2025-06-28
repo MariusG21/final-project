@@ -1,0 +1,20 @@
+.best-sellers-page {
+  margin-top: 9.25rem;
+  padding: 2rem 2rem 0 26rem;
+  background-image: url("/images/background/best-sellers.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: calc(100vh - 9.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15rem;
+}
+@media (max-width: 768px) {
+  .best-sellers-page {
+    padding-left: 2rem;
+  }
+}

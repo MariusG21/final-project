@@ -1,0 +1,24 @@
+.sale-badge-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 9rem;
+  height: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sale-badge- {
+  width: 100%;
+}
+.sale-badge-text {
+  position: absolute;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 0.4rem rgb(1, 255, 18);
+  transform: rotate(-45deg);
+  margin-top: -2.5rem;
+  margin-left: -2.5rem;
+  white-space: nowrap;
+}

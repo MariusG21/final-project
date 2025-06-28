@@ -1,0 +1,18 @@
+.book-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+}
+.original-price {
+  text-decoration: line-through;
+  font-size: 1.4rem;
+  font-weight: 500;
+  opacity: 0.6;
+}
+.discounted-price {
+  color: #ff0000;
+}

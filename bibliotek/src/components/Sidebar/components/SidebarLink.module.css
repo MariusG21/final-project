@@ -1,0 +1,26 @@
+.links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  height: 4.6rem;
+  color: #3d5ea9;
+  font-weight: 700;
+  border-radius: 1rem;
+  cursor: pointer;
+  &:hover {
+    color: #ffffff;
+    .links-icons {
+      background-image: none;
+    }
+  }
+}
+.links-icons {
+  height: 100%;
+  aspect-ratio: 1/1;
+  background: linear-gradient(to bottom, #182787, #1f2f9e), #2c41c8;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
