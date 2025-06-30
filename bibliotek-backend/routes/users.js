@@ -1,6 +1,8 @@
 import express from "express";
-import { User } from "../models/index.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { User } from "../models/index.js";
+import { JWT_SECRET } from "../config.js";
 
 const router = express.Router();
 
@@ -64,8 +66,11 @@ router.post("/login", async (req, res) => {
     }
 
     const { password: _, updatedAt: __, ...user } = existingUser;
+    const accessToken = jwt.sign({ id: user.id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
-    return res.json(user);
+    return res.json({ success: true, data: { user, accessToken } });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error." });

@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 import { sequelize } from "./models/index.js";
 import { Book } from "./models/index.js";
 import { defaultBooks } from "./defaultData/defaultBooks.js";
@@ -8,6 +9,7 @@ import userRouter from "./routes/users.js";
 import bestSellersRouter from "./routes/bestSellers.js";
 
 const app = express();
+dotenv.config();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
