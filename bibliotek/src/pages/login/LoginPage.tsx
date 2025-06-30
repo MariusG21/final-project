@@ -2,13 +2,14 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import toast from "react-hot-toast";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthLayout } from "@/components/Auth/AuthLayout";
 import { AuthFooter } from "@/components/Auth/components/AuthFooter";
 import { FormGroup } from "@/components/Auth/components/FormGroup";
 import { AuthActions } from "@/components/Auth/components/AuthActions";
+import { useAuthContext } from "@/context/auth/useAuthContext";
 import styles from "./LoginPage.module.css";
-import toast from "react-hot-toast";
 
 type LoginFormData = {
   username: string;
@@ -27,6 +28,7 @@ export function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const defaultUsername = location.state?.username || "";
+  const { login } = useAuthContext();
 
   const {
     register,
@@ -46,7 +48,7 @@ export function LoginPage() {
     try {
       console.log("Form submitted with data:", formData);
       const { data } = await axios.post("/api/users/login", formData);
-      console.log(data);
+      login(data.data);
       toast.success("Logged in successfully");
       navigate("/");
     } catch (error) {
