@@ -1,27 +1,27 @@
 import { Link } from "react-router";
-import { useEffect, useState } from "react";
+import { useAuthContext } from "@/context/auth/useAuthContext";
+import { getFirstLetter } from "@/utils/getFirstLetter";
 import blankProfilePicture from "@/assets/images/blank-profile-picture.png";
 import styles from "./UserProfile.module.css";
 
 export function UserProfile() {
-  const [user, setUser] = useState(false);
+  const { user } = useAuthContext();
 
-  useEffect(() => {
-    setUser(false);
-  }, []);
-
-  return (
+  return user ? (
+    <Link to="/profile" className={styles["user-profile"]}>
+      <div className={styles["profile-picture"]}>
+        {getFirstLetter(user.username)}
+      </div>
+      <div className={styles["user-details"]}>{user.username}</div>
+    </Link>
+  ) : (
     <div className={styles["user-profile"]}>
       <div className={styles["profile-picture"]}>
         <img src={blankProfilePicture} alt="" />
       </div>
-      {user ? (
-        <div className={styles["user-details"]}>Marius</div>
-      ) : (
-        <Link to="/login" className={styles["login-button"]}>
-          Login
-        </Link>
-      )}
+      <Link to="/login" className={styles["login-button"]}>
+        Login
+      </Link>
     </div>
   );
 }
