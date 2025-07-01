@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router";
+import { Toaster } from "react-hot-toast";
 import { HomePage } from "./pages/home/HomePage";
-import { NotFoundPage } from "./pages/not-found/NotFoundPage";
 import { BookPage } from "./pages/book/BookPage";
+import { CheckoutPage } from "./pages/checkout/CheckoutPage";
 import { LoginPage } from "./pages/login/LoginPage";
 import { RegisterPage } from "./pages/register/RegisterPage";
 import { BestSellersPage } from "./pages/best-sellers/BestSellersPage";
-import { Toaster } from "react-hot-toast";
+import { NotFoundPage } from "./pages/not-found/NotFoundPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/books/:bookId" element={<BookPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/best-sellers" element={<BestSellersPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

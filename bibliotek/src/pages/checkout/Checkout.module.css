@@ -1,0 +1,14 @@
+.checkout-page {
+  margin-top: 9.25rem;
+  padding: 2rem 2rem 2rem 26rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .checkout-page {
+    padding: 2rem;
+  }
+}
