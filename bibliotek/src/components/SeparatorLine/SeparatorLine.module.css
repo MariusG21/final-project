@@ -1,0 +1,17 @@
+.h {
+  width: 100%;
+  height: 0.2rem;
+}
+.v {
+  height: 70%;
+  width: 0.2rem;
+}
+.primary {
+  background-image: radial-gradient(#38a0ff, #1f289a, #111265, transparent);
+}
+.secondary {
+  background-image: radial-gradient(#dc42ff, transparent);
+}
+.third {
+  background-color: #202c7d;
+}

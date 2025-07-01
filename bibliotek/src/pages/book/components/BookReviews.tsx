@@ -1,5 +1,5 @@
 import type { Book } from "@/types/Book";
-import { SeparatorLine } from "./SeparatorLine";
+import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
 import styles from "./BookReviews.module.css";
 
 type BookReviewsProps = Pick<Book, "rating" | "copiesSold">;

@@ -1,5 +1,5 @@
 import type { Book } from "@/types/Book";
-import { SeparatorLine } from "./SeparatorLine";
+import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
 import styles from "./BookIdentity.module.css";
 
 type BookIdentityProps = Pick<Book, "title" | "author" | "genre">;

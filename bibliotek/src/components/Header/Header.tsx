@@ -3,6 +3,7 @@ import { Logo } from "./components/Logo";
 import { SearchBar } from "./components/SearchBar";
 import { CheckoutLink } from "./components/CheckoutLink";
 import { UserProfile } from "./components/UserProfile";
+import { SeparatorLine } from "../SeparatorLine/SeparatorLine";
 import styles from "./Header.module.css";
 
 export function Header() {
@@ -14,6 +15,7 @@ export function Header() {
         <SearchBar />
         <div className={styles["right-section"]}>
           <CheckoutLink />
+          <SeparatorLine direction="v" color="third" />
           <UserProfile />
         </div>
       </div>

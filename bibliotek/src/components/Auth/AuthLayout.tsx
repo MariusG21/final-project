@@ -1,3 +1,4 @@
+import { SeparatorLine } from "../SeparatorLine/SeparatorLine";
 import styles from "./AuthLayout.module.css";
 
 type AuthLayoutProps = {
@@ -13,7 +14,7 @@ export function AuthLayout({ title, subtitle, children }: AuthLayoutProps) {
       <div className={styles["auth-content"]}>
         <p>{title}</p>
         <h1>{subtitle}</h1>
-        <div className={styles["separator-line"]}></div>
+        <SeparatorLine color="secondary" />
         {children}
       </div>
     </div>

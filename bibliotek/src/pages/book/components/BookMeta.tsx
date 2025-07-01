@@ -1,5 +1,5 @@
 import { BookPrice } from "@/components/Price/BookPrice";
-import { SeparatorLine } from "./SeparatorLine";
+import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
 import styles from "./BookMeta.module.css";
 import type { Book } from "@/types/Book";
 
