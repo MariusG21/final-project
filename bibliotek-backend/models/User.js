@@ -11,10 +11,16 @@ export const User = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
+    set(value) {
+      this.setDataValue("username", value.trim());
+    },
   },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    set(value) {
+      this.setDataValue("email", value.trim().toLowerCase());
+    },
   },
   password: {
     type: DataTypes.STRING,

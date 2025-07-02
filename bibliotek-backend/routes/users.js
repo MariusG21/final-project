@@ -10,13 +10,17 @@ router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    const existingUsername = await User.findOne({ where: { username } });
+    const existingUsername = await User.findOne({
+      where: { username: username.trim() },
+    });
     if (existingUsername) {
       return res
         .status(409)
         .json({ success: false, message: "Username already taken" });
     }
-    const existingEmail = await User.findOne({ where: { email } });
+    const existingEmail = await User.findOne({
+      where: { email: email.trim().toLowerCase() },
+    });
     if (existingEmail) {
       return res.status(409).json({
         success: false,
@@ -47,7 +51,10 @@ router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    const existingUser = await User.findOne({ where: { username }, raw: true });
+    const existingUser = await User.findOne({
+      where: { username: username.trim() },
+      raw: true,
+    });
     if (!existingUser) {
       return res
         .status(401)

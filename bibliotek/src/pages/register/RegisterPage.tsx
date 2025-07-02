@@ -54,6 +54,8 @@ export function RegisterPage() {
   const onSubmit = async (formData: RegisterFormData) => {
     try {
       delete formData.confirmPassword;
+      formData.username = formData.username.trim();
+      formData.email = formData.email.trim().toLowerCase();
 
       await axios.post("/api/users/register", formData);
 

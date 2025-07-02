@@ -46,7 +46,8 @@ export function LoginPage() {
 
   const onSubmit = async (formData: LoginFormData) => {
     try {
-      console.log("Form submitted with data:", formData);
+      formData.username = formData.username.trim();
+
       const { data } = await axios.post("/api/users/login", formData);
       login(data.data);
       toast.success("Logged in successfully");
