@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
-import { ErrorMessage } from "@/components/ErrorMessage/ErrorMessage";
-import type { Book } from "@/types/Book";
+import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
+import type { Book } from "@/types/Book";
 import { BookDetails } from "./components/BookDetails";
 import { SimilarBooks } from "./components/SimilarBooks";
 import styles from "./BookPage.module.css";
@@ -48,7 +49,7 @@ export function BookPage() {
       <Sidebar />
       <main className={styles["book-page"]}>
         {isLoading ? (
-          <p className="loading-message">Loading book...</p>
+          <LoadingMessage message="Loading book..." />
         ) : error ? (
           <ErrorMessage message={error} />
         ) : (

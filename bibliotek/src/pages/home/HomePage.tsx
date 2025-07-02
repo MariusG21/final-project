@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
-import { ErrorMessage } from "@/components/ErrorMessage/ErrorMessage";
+import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
 import type { BookPreview } from "@/types/Book";
 import { BooksGrid } from "./components/BooksGrid";
 import styles from "./HomePage.module.css";
@@ -36,7 +37,7 @@ export function HomePage() {
       <Sidebar />
       <main className={styles["home-page"]}>
         {isLoading ? (
-          <div className="loading-message">Loading books...</div>
+          <LoadingMessage message="Loading books..." />
         ) : error ? (
           <ErrorMessage message={error} />
         ) : (

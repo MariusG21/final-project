@@ -6,6 +6,8 @@ import type { BestSeller } from "@/types/Book";
 import { BestSellersHeader } from "./components/BestSellersHeader";
 import { Podium } from "./components/Podium";
 import styles from "./BestSellersPage.module.css";
+import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
+import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
 
 export function BestSellersPage() {
   const [bestSellers, setBestSellers] = useState<BestSeller[]>([]);
@@ -39,7 +41,16 @@ export function BestSellersPage() {
       <Sidebar />
       <main className={styles["best-sellers-page"]}>
         <BestSellersHeader />
-        {bestSellers.length && <Podium bestSellers={bestSellers} />}
+        {isLoading ? (
+          <LoadingMessage
+            message="Books are loading. Please wait."
+            position="toTop"
+          />
+        ) : error ? (
+          <ErrorMessage message={error} position="toTop" />
+        ) : (
+          <Podium bestSellers={bestSellers} />
+        )}
       </main>
     </>
   );

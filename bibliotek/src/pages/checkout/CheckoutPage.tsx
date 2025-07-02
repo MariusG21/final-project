@@ -3,12 +3,13 @@ import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { PaymentSummary } from "./components/PaymentSummary";
 import { CartItemsGrid } from "./components/CartItemsGrid";
 import { CheckoutHeader } from "./components/CheckoutHeader";
-import styles from "./Checkout.module.css";
 import { useAuthContext } from "@/context/auth/useAuthContext";
-import { Link } from "react-router";
+import { LoginMessage } from "@/components/InfoMessages/LoginMessage/LoginMessage";
+import styles from "./Checkout.module.css";
 
 export function CheckoutPage() {
-  const { user } = useAuthContext();
+  const { user, logout } = useAuthContext();
+  logout();
 
   return (
     <>
@@ -17,9 +18,7 @@ export function CheckoutPage() {
       <div className={styles["checkout-page"]}>
         <CheckoutHeader />
         {!user ? (
-          <p>
-            Please login to access your cart. <Link to="/login">Login</Link>
-          </p>
+          <LoginMessage message="Please login to access your cart." />
         ) : (
           <>
             <PaymentSummary />
