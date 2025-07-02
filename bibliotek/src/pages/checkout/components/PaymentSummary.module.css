@@ -9,7 +9,7 @@
   max-width: 44rem;
   min-width: 30rem;
   position: sticky;
-  top: calc(9.25rem + 2rem);
+  top: calc(9.25rem + 2rem + 6rem);
 }
 @media (max-width: 1158px) {
   .payment-summary {
