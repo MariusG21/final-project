@@ -7,6 +7,7 @@ import { defaultBooks } from "./defaultData/defaultBooks.js";
 import booksRouter from "./routes/books.js";
 import userRouter from "./routes/users.js";
 import bestSellersRouter from "./routes/bestSellers.js";
+import cartRouter from "./routes/carts.js";
 
 const app = express();
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(cors());
 app.use("/api/books", booksRouter);
 app.use("/api/users", userRouter);
 app.use("/api/best-sellers", bestSellersRouter);
+app.use("/api/cart", cartRouter);
 
 const startServer = async () => {
   await sequelize.sync({ force: true });

@@ -1,23 +1,23 @@
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "../config";
+import { JWT_SECRET } from "../config.js";
 
 export const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    res
+    return res
       .status(401)
       .json({ success: false, message: "Authorization header missing" });
   }
 
   const token = authHeader.split(" ")[1];
   if (!token) {
-    res.status(401).json({ success: false, message: "Token missing" });
+    return res.status(401).json({ success: false, message: "Token missing" });
   }
 
   try {
-    const decodedUserId = jwt.verify(token, JWT_SECRET);
-    req.userId = decodedUserId;
-    console.log(decodedUserId);
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.userId = decoded.id;
+    console.log(decoded.id);
     next();
   } catch (error) {
     res
