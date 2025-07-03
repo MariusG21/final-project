@@ -34,6 +34,9 @@ router.post("/register", async (req, res) => {
       email,
       password: hashedPassword,
     });
+
+    await newUser.createCart();
+
     return res.status(201).json({
       success: true,
       message: "Success",
