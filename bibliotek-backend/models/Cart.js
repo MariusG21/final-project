@@ -20,7 +20,7 @@ export const Cart = sequelize.define("cart", {
   taxRate: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    defaultValue: 10,
+    defaultValue: 0,
   },
   tax: {
     type: DataTypes.INTEGER,
