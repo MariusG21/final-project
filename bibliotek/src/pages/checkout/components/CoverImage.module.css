@@ -1,0 +1,10 @@
+.cover-image-container {
+  width: 18rem;
+  overflow: hidden;
+  .cover-image {
+    transition: transform 150ms;
+  }
+  &:hover .cover-image {
+    transform: scale(1.05);
+  }
+}

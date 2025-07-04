@@ -1,0 +1,14 @@
+.book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  & > * {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    .label {
+      color: #d1d1d1;
+    }
+  }
+}
