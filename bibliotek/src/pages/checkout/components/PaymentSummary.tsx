@@ -1,30 +1,16 @@
 import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
+import { SummaryRow } from "./SummaryRow";
 import styles from "./PaymentSummary.module.css";
 
 export function PaymentSummary() {
   return (
     <div className={styles["payment-summary"]}>
-      <div className={styles["rows"]}>
-        <div className={styles["label"]}>Items:</div>
-        <div className={styles["price"]}>0</div>
-      </div>
-      <div className={styles["rows"]}>
-        <div className={styles["label"]}>Subtotal:</div>
-        <div className={styles["price"]}>0</div>
-      </div>
-      <div className={styles["rows"]}>
-        <div className={styles["label"]}>Tax Rate:</div>
-        <div className={styles["price"]}>0</div>
-      </div>
-      <div className={styles["rows"]}>
-        <div className={styles["label"]}>Tax:</div>
-        <div className={styles["price"]}>0</div>
-      </div>
+      <SummaryRow label="Items:" value={0} />
+      <SummaryRow label="Subtotal:" value={0} type="currency" />
+      <SummaryRow label="Tax Rate:" value={0} type="percentage" />
+      <SummaryRow label="Tax:" value={0} type="currency" />
       <SeparatorLine color="secondary" />
-      <div className={styles["rows"]}>
-        <div className={styles["label"]}>Total:</div>
-        <div className={styles["price"]}>0</div>
-      </div>
+      <SummaryRow label="Total:" value={0} highlight type="currency" />
     </div>
   );
 }
