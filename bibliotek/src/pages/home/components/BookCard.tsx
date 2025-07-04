@@ -15,7 +15,11 @@ export function BookCard({ book }: BookCardProps) {
 
       <BookRating rating={book.rating} />
 
-      <BookPriceAndCart price={book.price} discount={book.discount} />
+      <BookPriceAndCart
+        price={book.price}
+        discount={book.discount}
+        id={book.id}
+      />
     </div>
   );
 }
