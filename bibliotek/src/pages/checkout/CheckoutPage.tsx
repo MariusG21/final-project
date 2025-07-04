@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { PaymentSummary } from "./components/PaymentSummary";
@@ -8,8 +10,27 @@ import { LoginMessage } from "@/components/InfoMessages/LoginMessage/LoginMessag
 import styles from "./Checkout.module.css";
 
 export function CheckoutPage() {
-  const { user, logout } = useAuthContext();
-  logout();
+  const { user, accessToken } = useAuthContext();
+  const [cart, setCart] = useState<null | unknown>(null);
+
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const { data } = await axios.get("/api/cart", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        console.log(data.data);
+        setCart(data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (user) {
+      fetchCart();
+    }
+  }, [accessToken, user]);
 
   return (
     <>
