@@ -1,9 +1,9 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import { BookPrice } from "@/components/Price/BookPrice";
 import type { BookPreview } from "@/types/Book";
 import styles from "./BookPriceAndCart.module.css";
-import toast from "react-hot-toast";
 
 type BookPriceAndCartProps = Pick<BookPreview, "price" | "discount" | "id">;
 
@@ -12,25 +12,48 @@ export function BookPriceAndCart({
   discount,
   id,
 }: BookPriceAndCartProps) {
-  const { user, accessToken } = useAuthContext();
+  const { user, accessToken, logout } = useAuthContext();
 
   const addToCart = async () => {
     if (!user) {
       toast.error("Please login before adding to cart");
       return;
     }
-    const { data } = await axios.post(
-      "/api/cart/items",
-      {
-        id,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+    try {
+      const { data } = await axios.post(
+        "/api/cart/items",
+        {
+          id,
         },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      if (data.success) {
+        toast.success(data.message);
       }
-    );
-    console.log(data.data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          const { status } = error.response;
+          const message =
+            error.response.data?.message || "Unexpected server error.";
+
+          if (status === 409) {
+            toast(message);
+          } else if (status === 404 || status === 401) {
+            toast.error(message);
+          } else {
+            toast.error(message);
+          }
+        }
+      } else {
+        console.error(error);
+        toast.error("Something went wrong");
+      }
+    }
   };
 
   return (
