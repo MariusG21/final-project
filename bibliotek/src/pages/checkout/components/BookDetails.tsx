@@ -1,12 +1,22 @@
+import type { CartBook } from "@/types/Book";
 import { BookActions } from "./BookActions";
 import { BookInfo } from "./BookInfo";
 import styles from "./BookDetails.module.css";
 
-export function BookDetails() {
+type BookDetailsProps = {
+  book: CartBook;
+};
+
+export function BookDetails({ book }: BookDetailsProps) {
   return (
     <div className={styles["book-details"]}>
-      <BookInfo />
-      <BookActions />
+      <BookInfo
+        title={book.title}
+        author={book.author}
+        price={book.price}
+        discount={book.discount}
+      />
+      <BookActions id={book.id} />
     </div>
   );
 }

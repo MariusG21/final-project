@@ -1,17 +1,13 @@
 import { Link } from "react-router";
+import type { CartBook } from "@/types/Book";
 import styles from "./CoverImage.module.css";
 
-export function CoverImage() {
+type CoverImageProps = Pick<CartBook, "id" | "image">;
+
+export function CoverImage({ id, image }: CoverImageProps) {
   return (
-    <Link
-      to={`/books/${"id-here"}`}
-      className={styles["cover-image-container"]}
-    >
-      <img
-        src="/images/books/the-dark-forest.jpg"
-        alt="#"
-        className={styles["cover-image"]}
-      />
+    <Link to={`/books/${id}`} className={styles["cover-image-container"]}>
+      <img src={image} alt="#" className={styles["cover-image"]} />
     </Link>
   );
 }

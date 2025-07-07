@@ -1,6 +1,9 @@
+import type { CartBook } from "@/types/Book";
 import styles from "./BookActions.module.css";
 
-export function BookActions() {
+type BookActionsProps = Pick<CartBook, "id">;
+
+export function BookActions({ id }: BookActionsProps) {
   return (
     <div className={styles["book-actions"]}>
       <div role="button" className={styles["remove-button"]}>

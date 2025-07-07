@@ -1,8 +1,8 @@
 import { formatCurrency, formatDiscountedPrice } from "@/utils/priceFormatter";
-import type { BookPreview } from "@/types/Book";
+import type { Book } from "@/types/Book";
 import styles from "./BookPrice.module.css";
 
-type PriceProps = Pick<BookPreview, "price" | "discount">;
+type PriceProps = Pick<Book, "price" | "discount">;
 
 export function BookPrice({ price, discount }: PriceProps) {
   return (
