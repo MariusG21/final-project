@@ -26,4 +26,6 @@ type BestSeller = SimilarBook & {
   place: number;
 };
 
-export type { Book, BookPreview, SimilarBook, BestSeller };
+type CartBook = Omit<BookPreview, "rating">;
+
+export type { Book, BookPreview, SimilarBook, BestSeller, CartBook };
