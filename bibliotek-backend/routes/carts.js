@@ -90,4 +90,28 @@ router.post("/items", async (req, res) => {
   }
 });
 
+router.delete("/items/:id", async (req, res) => {
+  try {
+    const { userId } = req;
+    const { id: bookId } = req.params;
+
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found." });
+    }
+
+    const cart = await user.getCart();
+    await cart.removeBook(bookId);
+
+    return res.json({ success: true, message: "Removed from cart." });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Failed to remove." });
+  }
+});
+
 export default router;
