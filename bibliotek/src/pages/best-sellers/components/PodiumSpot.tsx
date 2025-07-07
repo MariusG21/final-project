@@ -27,11 +27,9 @@ export function PodiumSpot({ bestSeller }: PodiumSpotProps) {
         <p className={styles["book-author"]}>{bestSeller.author}</p>
         <Link
           to={`/books/${bestSeller.id}`}
-          className={`${styles["view-details-border"]}  primary-border`}
+          className={styles["view-details-border"]}
         >
-          <div className={`${styles["view-details-button"]}  primary-button`}>
-            View Details
-          </div>
+          <div className={styles["view-details-button"]}>View Details</div>
         </Link>
       </div>
     </div>

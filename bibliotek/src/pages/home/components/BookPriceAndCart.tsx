@@ -12,7 +12,7 @@ export function BookPriceAndCart({
   discount,
   id,
 }: BookPriceAndCartProps) {
-  const { user, accessToken, logout } = useAuthContext();
+  const { user, accessToken } = useAuthContext();
 
   const addToCart = async () => {
     if (!user) {

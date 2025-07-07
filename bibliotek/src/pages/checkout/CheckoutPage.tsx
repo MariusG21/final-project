@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { useAuthContext } from "@/context/auth/useAuthContext";
+import { useCartBooksContext } from "@/context/cartBooks/useCartBooksContext";
 import { LoginMessage } from "@/components/InfoMessages/LoginMessage/LoginMessage";
 import { PaymentSummary } from "./components/PaymentSummary";
 import { CartItemsGrid } from "./components/CartItemsGrid";
 import { CheckoutHeader } from "./components/CheckoutHeader";
 import styles from "./Checkout.module.css";
-import { useCartBooksContext } from "@/context/cartBooks/useCartBooksContext";
 
 export function CheckoutPage() {
   const { user, accessToken } = useAuthContext();

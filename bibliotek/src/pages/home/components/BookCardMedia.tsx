@@ -20,13 +20,8 @@ export function BookCardMedia({ book }: BookCardMediaProps) {
         <div className={styles["book-title"]}>{book.title}</div>
         <div className={styles["book-author"]}>{book.author}</div>
       </div>
-      <Link
-        to={`/books/${book.id}`}
-        className={`${styles["view-details-border"]}  primary-border`}
-      >
-        <div className={`${styles["view-details-button"]}  primary-button`}>
-          View Details
-        </div>
+      <Link to={`/books/${book.id}`} className={styles["view-details-border"]}>
+        <div className={styles["view-details-button"]}>View Details</div>
       </Link>
       <div
         className={
