@@ -2,15 +2,18 @@ import { StrictMode } from "react";
 import { BrowserRouter } from "react-router";
 import { createRoot } from "react-dom/client";
 import { AuthProvider } from "@/context/auth/AuthProvider.tsx";
-import "./index.css";
+import { CartBooksProvider } from "@/context/cartBooks/CartBooksProvider.tsx";
 import App from "./App.tsx";
+import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <StrictMode>
+  <StrictMode>
+    <BrowserRouter>
       <AuthProvider>
-        <App />
+        <CartBooksProvider>
+          <App />
+        </CartBooksProvider>
       </AuthProvider>
-    </StrictMode>
-  </BrowserRouter>
+    </BrowserRouter>
+  </StrictMode>
 );
