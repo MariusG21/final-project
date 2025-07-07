@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, type ReactNode } from "react";
+import { useCallback, useState, type ReactNode } from "react";
 import { CartBooksContext } from "./CartBooksContext";
 import { useAuthContext } from "../auth/useAuthContext";
 import type { CartBooksStateValue } from "./types";
@@ -9,7 +9,7 @@ export function CartBooksProvider({ children }: { children: ReactNode }) {
   const [books, setBooks] = useState<CartBooksStateValue>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchCartBooks = async () => {
+  const fetchCartBooks = useCallback(async () => {
     try {
       const { data } = await axios.get("/api/cart/items", {
         headers: {
@@ -39,7 +39,7 @@ export function CartBooksProvider({ children }: { children: ReactNode }) {
         console.error("Unknown error:", error);
       }
     }
-  };
+  }, [accessToken]);
 
   return (
     <CartBooksContext.Provider value={{ books, fetchCartBooks, error }}>
