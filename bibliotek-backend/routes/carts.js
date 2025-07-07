@@ -26,6 +26,31 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/items", async (req, res) => {
+  try {
+    const { userId } = req;
+
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found." });
+    }
+    const cart = await user.getCart();
+    const books = await cart.getBooks({
+      attributes: ["id", "title", "author", "image", "price", "discount"],
+      joinTableAttributes: [],
+    });
+
+    return res.json({ success: true, data: books });
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error." });
+  }
+});
+
 router.post("/items", async (req, res) => {
   try {
     const { userId } = req;
