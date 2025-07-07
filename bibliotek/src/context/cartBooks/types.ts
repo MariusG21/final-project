@@ -4,6 +4,7 @@ type CartBooksContextValue = {
   books: CartBook[];
   fetchCartBooks: () => Promise<void>;
   error: string | null;
+  loading: boolean;
 };
 
 type CartBooksStateValue = CartBook[];

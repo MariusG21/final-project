@@ -8,8 +8,10 @@ export function CartBooksProvider({ children }: { children: ReactNode }) {
   const { accessToken } = useAuthContext();
   const [books, setBooks] = useState<CartBooksStateValue>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const fetchCartBooks = useCallback(async () => {
+    setLoading(true);
     try {
       const { data } = await axios.get("/api/cart/items", {
         headers: {
@@ -38,11 +40,15 @@ export function CartBooksProvider({ children }: { children: ReactNode }) {
         setError("Failed to load your books. 🥲");
         console.error("Unknown error:", error);
       }
+    } finally {
+      setLoading(false);
     }
   }, [accessToken]);
 
   return (
-    <CartBooksContext.Provider value={{ books, fetchCartBooks, error }}>
+    <CartBooksContext.Provider
+      value={{ books, fetchCartBooks, error, loading }}
+    >
       {children}
     </CartBooksContext.Provider>
   );
