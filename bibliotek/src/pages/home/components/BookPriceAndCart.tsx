@@ -1,5 +1,5 @@
 import axios from "axios";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import { BookPrice } from "@/components/Price/BookPrice";
 import type { BookPreview } from "@/types/Book";
@@ -42,7 +42,7 @@ export function BookPriceAndCart({
             error.response.data?.message || "Unexpected server error.";
 
           if (status === 409) {
-            toast(message);
+            toast.info(message);
           } else if (status === 404 || status === 401) {
             toast.error(message);
           } else {

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router";
-import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
 import { HomePage } from "./pages/home/HomePage";
 import { BookPage } from "./pages/book/BookPage";
 import { CheckoutPage } from "./pages/checkout/CheckoutPage";
@@ -7,11 +7,18 @@ import { LoginPage } from "./pages/login/LoginPage";
 import { RegisterPage } from "./pages/register/RegisterPage";
 import { BestSellersPage } from "./pages/best-sellers/BestSellersPage";
 import { NotFoundPage } from "./pages/not-found/NotFoundPage";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
-      <Toaster />
+      <ToastContainer
+        position="top-center"
+        limit={3}
+        autoClose={500}
+        hideProgressBar
+        pauseOnHover={false}
+      />
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/books/:bookId" element={<BookPage />} />

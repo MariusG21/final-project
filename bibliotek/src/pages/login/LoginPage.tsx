@@ -2,7 +2,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthLayout } from "@/components/Auth/AuthLayout";
 import { AuthFooter } from "@/components/Auth/components/AuthFooter";
@@ -70,7 +70,9 @@ export function LoginPage() {
           reset();
         }
       } else {
-        console.error("Something went wrong: ", error);
+        toast.error("Something went wrong.");
+        console.error(error);
+        reset();
       }
     }
   };

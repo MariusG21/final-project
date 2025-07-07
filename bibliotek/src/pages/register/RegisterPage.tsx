@@ -1,14 +1,14 @@
 import * as yup from "yup";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { AuthLayout } from "@/components/Auth/AuthLayout";
 import { FormGroup } from "@/components/Auth/components/FormGroup";
 import { AuthActions } from "@/components/Auth/components/AuthActions";
 import { AuthFooter } from "@/components/Auth/components/AuthFooter";
 import styles from "./RegisterPage.module.css";
-import axios from "axios";
-import toast from "react-hot-toast";
 
 type RegisterFormData = {
   username: string;
@@ -67,7 +67,8 @@ export function RegisterPage() {
       });
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        const message: string = error.response?.data?.message;
+        const message: string =
+          error.response?.data?.message || "Unexpected error occurred.";
         if (message === "Username already taken") {
           setError("username", {
             message,
@@ -76,8 +77,11 @@ export function RegisterPage() {
           setError("email", {
             message,
           });
+        } else {
+          toast.error(message);
         }
       } else {
+        toast.error("Something went wrong.");
         console.error(error);
       }
     }
