@@ -86,12 +86,15 @@ ol {
   font-weight: 700;
   color: #ffffffc1;
   text-align: center;
-  margin-top: 20rem;
+  height: 100%;
+  min-height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .toTop {
-  height: 100%;
-  margin-top: 0;
-  margin-bottom: auto;
+  justify-content: start;
 }
 .info-link {
   text-decoration: underline;
