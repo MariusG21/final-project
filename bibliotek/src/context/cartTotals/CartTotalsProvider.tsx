@@ -6,7 +6,7 @@ import type { CartTotalsContextState } from "./types";
 
 export function CartTotalsProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartTotalsContextState>(null);
-  const { accessToken } = useAuthContext();
+  const { user, accessToken } = useAuthContext();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -47,7 +47,7 @@ export function CartTotalsProvider({ children }: { children: ReactNode }) {
     <CartTotalsContext.Provider
       value={{
         cart,
-        cartQuantity: cart?.quantity ?? 0,
+        cartQuantity: user ? cart?.quantity ?? 0 : 0,
         fetchCartTotals,
         error,
         loading,
