@@ -1,4 +1,4 @@
-import type { CartBook } from "@/types/Book";
+import type { CartBook } from "@/types/Cart";
 import styles from "./BookActions.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";

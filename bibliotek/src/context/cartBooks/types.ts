@@ -1,4 +1,4 @@
-import type { CartBook } from "@/types/Book";
+import type { CartBook } from "@/types/Cart";
 
 type CartBooksContextValue = {
   books: CartBook[];

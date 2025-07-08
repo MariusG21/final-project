@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { CartBook } from "@/types/Book";
+import type { CartBook } from "@/types/Cart";
 import styles from "./CoverImage.module.css";
 
 type CoverImageProps = Pick<CartBook, "id" | "image">;

@@ -1,6 +1,6 @@
 import { BookPrice } from "@/components/Price/BookPrice";
 import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
-import type { CartBook } from "@/types/Book";
+import type { CartBook } from "@/types/Cart";
 import styles from "./BookInfo.module.css";
 
 type BookInfoProps = Omit<CartBook, "id" | "image">;

@@ -1,4 +1,4 @@
-import type { CartBook } from "@/types/Book";
+import type { CartBook } from "@/types/Cart";
 import { BookActions } from "./BookActions";
 import { BookInfo } from "./BookInfo";
 import styles from "./BookDetails.module.css";
