@@ -1,6 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuthContext } from "@/context/auth/useAuthContext";
+import { useCartBooksContext } from "@/context/cartBooks/useCartBooksContext";
+import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext";
 import { BookPrice } from "@/components/Price/BookPrice";
 import type { BookPreview } from "@/types/Book";
 import styles from "./BookPriceAndCart.module.css";
@@ -13,6 +15,8 @@ export function BookPriceAndCart({
   id,
 }: BookPriceAndCartProps) {
   const { user, accessToken } = useAuthContext();
+  const { fetchCartBooks } = useCartBooksContext();
+  const { fetchCartTotals } = useCartTotalsContext();
 
   const addToCart = async () => {
     if (!user) {
@@ -33,6 +37,8 @@ export function BookPriceAndCart({
       );
       if (data.success) {
         toast.success(data.message);
+        fetchCartBooks();
+        fetchCartTotals();
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {

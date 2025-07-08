@@ -1,15 +1,17 @@
-import type { CartBook } from "@/types/Cart";
-import styles from "./BookActions.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import { useCartBooksContext } from "@/context/cartBooks/useCartBooksContext";
+import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext";
+import type { CartBook } from "@/types/Cart";
+import styles from "./BookActions.module.css";
 
 type BookActionsProps = Pick<CartBook, "id">;
 
 export function BookActions({ id }: BookActionsProps) {
   const { accessToken } = useAuthContext();
   const { fetchCartBooks } = useCartBooksContext();
+  const { fetchCartTotals } = useCartTotalsContext();
 
   const removeFromCart = async () => {
     try {
@@ -21,6 +23,7 @@ export function BookActions({ id }: BookActionsProps) {
       if (data.success) {
         toast.info(data.message);
         fetchCartBooks();
+        fetchCartTotals();
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
