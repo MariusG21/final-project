@@ -1,6 +1,7 @@
 import express from "express";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { Book, User } from "../models/index.js";
+import { getCartTotals } from "../utils/getCartTotals.js";
 
 const router = express.Router();
 router.use(authMiddleware);
@@ -15,9 +16,15 @@ router.get("/", async (req, res) => {
         .status(404)
         .json({ success: false, message: "User not found" });
     }
-    const cart = await user.getCart();
+    const cart = await user.getCart({
+      attributes: {
+        exclude: ["userId"],
+      },
+    });
 
-    return res.json({ success: true, data: cart });
+    const cartTotals = await getCartTotals(cart);
+
+    return res.json({ success: true, data: cartTotals });
   } catch (error) {
     console.error(error);
     return res
