@@ -7,4 +7,5 @@
   gap: 3rem;
   border: 0.2rem solid #182787;
   max-width: 70rem;
+  min-width: 40rem;
 }
