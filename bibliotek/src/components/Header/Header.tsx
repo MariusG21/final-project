@@ -1,9 +1,10 @@
+import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
 import { TopLinks } from "./components/TopLinks";
 import { Logo } from "./components/Logo";
 import { SearchBar } from "./components/SearchBar";
 import { CheckoutLink } from "./components/CheckoutLink";
 import { UserProfile } from "./components/UserProfile";
-import { SeparatorLine } from "../SeparatorLine/SeparatorLine";
+import { HamburgerMenu } from "./components/HamburgerMenu";
 import styles from "./Header.module.css";
 
 export function Header() {
@@ -14,6 +15,7 @@ export function Header() {
         <Logo />
         <SearchBar />
         <div className={styles["right-section"]}>
+          <HamburgerMenu />
           <CheckoutLink />
           <SeparatorLine direction="v" color="third" />
           <UserProfile />

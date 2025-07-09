@@ -1,0 +1,28 @@
+.hamburger-menu {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  background: linear-gradient(to bottom, #182787, #1f2f9e), #2c41c8;
+  box-shadow: inset 0 0 0.3rem #ffffff31;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgb(107, 129, 181);
+  cursor: pointer;
+  transition: color 150ms;
+  display: none;
+  &:hover {
+    background-image: none;
+    color: #fff;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: flex;
+  }
+}
