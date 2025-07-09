@@ -18,4 +18,17 @@
   .sidebar {
     display: none;
   }
+  .sidebar.isOpen {
+    display: flex;
+    animation: smoothAppearance 300ms;
+  }
+}
+
+@keyframes smoothAppearance {
+  from {
+    transform: translateX(-24rem);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
