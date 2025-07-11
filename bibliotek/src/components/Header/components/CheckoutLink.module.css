@@ -2,6 +2,9 @@
   width: 10.2rem;
   height: 4rem;
 }
+.checkout-border.sm {
+  width: 4.6rem;
+}
 
 .checkout-button {
   text-transform: uppercase;
