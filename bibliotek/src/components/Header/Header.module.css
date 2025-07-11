@@ -21,7 +21,7 @@
     #141f64
   );
   border-bottom: 0.1rem solid rgb(22, 36, 127);
-  padding-right: 2rem;
+  padding-right: 1rem;
   * {
     flex-shrink: 0;
   }
