@@ -11,18 +11,11 @@
   color: rgb(107, 129, 181);
   cursor: pointer;
   transition: color 150ms;
-  display: none;
   &:hover {
     background-image: none;
     color: #fff;
   }
   &:active {
     transform: scale(0.98);
-  }
-}
-
-@media (max-width: 768px) {
-  .hamburger-menu {
-    display: flex;
   }
 }

@@ -1,9 +1,9 @@
 import { FiMenu, FiX } from "react-icons/fi";
-import { useSidebarContext } from "@/context/sidebar/useSidebarContext";
+import { useScreenSizeContext } from "@/context/screenSize/useScreenSizeContext";
 import styles from "./HamburgerMenu.module.css";
 
 export function HamburgerMenu() {
-  const { isSidebarOpenForSmallScreens, toggleSidebar } = useSidebarContext();
+  const { isSidebarOpenForSmallSize, toggleSidebar } = useScreenSizeContext();
 
   return (
     <div
@@ -11,7 +11,7 @@ export function HamburgerMenu() {
       onClick={toggleSidebar}
       className={styles["hamburger-menu"]}
     >
-      {isSidebarOpenForSmallScreens ? <FiX /> : <FiMenu />}
+      {isSidebarOpenForSmallSize ? <FiX /> : <FiMenu />}
     </div>
   );
 }
