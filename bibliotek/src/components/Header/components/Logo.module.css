@@ -16,12 +16,12 @@
   .logo-container {
     margin-left: 1rem;
   }
-  .logo-holder {
-    width: 8rem;
-  }
   .wrapper {
     margin-right: 0;
   }
+}
+.logo-holder-small {
+  width: 8rem;
 }
 .logo {
   width: 5rem;
@@ -32,9 +32,4 @@
   font-weight: 800;
   color: #fff;
   text-shadow: 0 0 1rem #ffd700;
-}
-@media (max-width: 768px) {
-  .logo-text {
-    display: none;
-  }
 }
