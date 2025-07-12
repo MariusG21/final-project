@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   gap: 2rem;
   color: #fff;
+  transition: ease-out padding 300ms;
 }
 @media (max-width: 768px) {
   .checkout-page {

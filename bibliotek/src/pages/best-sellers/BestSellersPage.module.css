@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 15rem;
+  transition: ease-out padding 300ms;
 }
 @media (max-width: 768px) {
   .best-sellers-page {

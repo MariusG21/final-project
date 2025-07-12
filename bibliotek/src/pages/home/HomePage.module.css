@@ -2,6 +2,7 @@
   margin-top: 9.25rem;
   padding: 2rem 2rem 2rem 26rem;
   width: 100%;
+  transition: ease-out padding 300ms;
 }
 @media (max-width: 768px) {
   .home-page {

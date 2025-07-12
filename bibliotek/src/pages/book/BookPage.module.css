@@ -6,6 +6,7 @@
   flex-direction: column;
   gap: 4rem;
   color: #fff;
+  transition: ease-out padding 300ms;
 }
 @media (max-width: 768px) {
   .book-page {

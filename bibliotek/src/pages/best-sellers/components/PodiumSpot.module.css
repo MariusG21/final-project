@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   perspective: 30rem;
+  transition: ease-out width 200ms;
 }
 .podium-top {
   width: 100%;
