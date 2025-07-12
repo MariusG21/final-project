@@ -122,7 +122,7 @@ export function RegisterPage() {
             label="Confirm Password"
             type="password"
             register={register}
-            placeholder="Confirm your password"
+            placeholder="Confirm password"
             error={errors.confirmPassword}
           />
         </div>

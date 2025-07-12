@@ -20,8 +20,9 @@
   flex-shrink: 0;
 }
 .auth-content {
-  width: 60rem;
-
+  width: 100%;
+  max-width: 60rem;
+  padding-inline: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
