@@ -5,9 +5,9 @@ import { useAuthContext } from "@/context/auth/useAuthContext";
 import { useCartBooksContext } from "@/context/cartBooks/useCartBooksContext";
 import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext";
 import { LoginMessage } from "@/components/InfoMessages/LoginMessage/LoginMessage";
+import { SecondHeader } from "@/components/SecondHeader/SecondHeader";
 import { PaymentSummary } from "./components/PaymentSummary";
 import { CartItemsGrid } from "./components/CartItemsGrid";
-import { CheckoutHeader } from "./components/CheckoutHeader";
 import styles from "./Checkout.module.css";
 
 export function CheckoutPage() {
@@ -27,7 +27,7 @@ export function CheckoutPage() {
       <Header />
       <Sidebar />
       <div className={styles["checkout-page"]}>
-        <CheckoutHeader />
+        <SecondHeader title="Checkout" />
         {!user ? (
           <LoginMessage message="Please login to access your cart." />
         ) : (

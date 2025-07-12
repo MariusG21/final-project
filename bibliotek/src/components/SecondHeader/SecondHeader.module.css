@@ -15,6 +15,7 @@
   letter-spacing: 0.05rem;
   z-index: 80;
   transition: left 300ms;
+  color: #fff;
   &::after {
     content: "";
     width: 100%;
