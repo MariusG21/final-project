@@ -6,6 +6,7 @@ import { CheckoutPage } from "./pages/checkout/CheckoutPage";
 import { LoginPage } from "./pages/login/LoginPage";
 import { RegisterPage } from "./pages/register/RegisterPage";
 import { BestSellersPage } from "./pages/best-sellers/BestSellersPage";
+import { BookshelfPage } from "./pages/bookshelf/BookshelfPage";
 import { NotFoundPage } from "./pages/not-found/NotFoundPage";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/best-sellers" element={<BestSellersPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/bookshelf" element={<BookshelfPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

@@ -5,7 +5,7 @@ import styles from "./SidebarNav.module.css";
 export function SidebarNav() {
   return (
     <nav className={styles["book-menu"]}>
-      <SidebarLink to="/library" label="Bookshelf" icon={BookOpen} />
+      <SidebarLink to="/bookshelf" label="Bookshelf" icon={BookOpen} />
       <SidebarLink to="/bookmarked" label="Bookmarked" icon={Bookmark} />
       <SidebarLink to="/best-sellers" label="Best Sellers" icon={TrendingUp} />
       <SidebarLink
