@@ -17,11 +17,16 @@ type LoginFormData = {
 };
 
 const schema = yup.object().shape({
-  username: yup.string().required("Username is required"),
+  username: yup
+    .string()
+    .required("Username is required")
+    .min(2, "Username must be at least 2 characters")
+    .max(20, "Username must be at most 20 characters"),
   password: yup
     .string()
     .required("Password is required")
-    .min(8, "Password must be at least 8 characters"),
+    .min(8, "Password must be at least 8 characters")
+    .max(50, "Password must be at most 50 characters"),
 });
 
 export function LoginPage() {
