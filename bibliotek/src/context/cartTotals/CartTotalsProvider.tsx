@@ -1,4 +1,4 @@
-import { useCallback, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { CartTotalsContext } from "./CartTotalsContext";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import axios from "axios";
@@ -42,6 +42,12 @@ export function CartTotalsProvider({ children }: { children: ReactNode }) {
       setLoading(false);
     }
   }, [accessToken]);
+
+  useEffect(() => {
+    if (user) {
+      fetchCartTotals();
+    }
+  }, [user, fetchCartTotals]);
 
   return (
     <CartTotalsContext.Provider
