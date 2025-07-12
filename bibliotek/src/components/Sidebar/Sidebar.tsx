@@ -8,7 +8,7 @@ export function Sidebar() {
   return (
     <aside
       className={`${styles["sidebar"]} ${
-        isSidebarOpenForSmallSize ? styles["isOpen"] : ""
+        isSidebarOpenForSmallSize ? styles["isOpen"] : styles["isClosed"]
       }`}
     >
       <SidebarNav />

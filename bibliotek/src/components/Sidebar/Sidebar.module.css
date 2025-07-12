@@ -13,22 +13,13 @@
   border-right: 0.1rem solid #101852;
   background-color: #0e0c49;
   z-index: 90;
+  transition: ease-out transform 300ms;
 }
 @media (max-width: 768px) {
-  .sidebar {
-    display: none;
-  }
   .sidebar.isOpen {
-    display: flex;
-    animation: smoothAppearance 300ms;
-  }
-}
-
-@keyframes smoothAppearance {
-  from {
-    transform: translateX(-24rem);
-  }
-  to {
     transform: translateX(0);
+  }
+  .sidebar.isClosed {
+    transform: translateX(-24rem);
   }
 }
