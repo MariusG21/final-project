@@ -1,0 +1,11 @@
+.bookshelf-page {
+  margin-top: calc(9.25rem + 6rem);
+  padding: 2rem 2rem 2rem 26rem;
+  width: 100%;
+  transition: ease-out padding 300ms;
+}
+@media (max-width: 768px) {
+  .bookshelf-page {
+    padding-left: 2rem;
+  }
+}

@@ -9,6 +9,7 @@ export function BookshelfPage() {
       <Header />
       <Sidebar />
       <SecondHeader title="Bookshelf" />
+      <main className={styles["bookshelf-page"]}></main>
     </>
   );
 }
