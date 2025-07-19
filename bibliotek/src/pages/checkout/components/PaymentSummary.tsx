@@ -4,6 +4,7 @@ import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/Loading
 import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
 import { SummaryRow } from "./SummaryRow";
 import styles from "./PaymentSummary.module.css";
+import { BuyNowButton } from "./BuyNowButton";
 
 export function PaymentSummary() {
   const { error, loading, cart } = useCartTotalsContext();
@@ -36,6 +37,7 @@ export function PaymentSummary() {
               highlight
               type="currency"
             />
+            <BuyNowButton />
           </>
         )
       )}

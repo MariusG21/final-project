@@ -8,8 +8,6 @@ import styles from "./CartItemsGrid.module.css";
 export function CartItemsGrid() {
   const { books, error, loading } = useCartBooksContext();
 
-  console.log(books);
-
   return (
     <div className={styles["cart-items-container"]}>
       {loading ? (
