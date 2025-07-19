@@ -1,0 +1,27 @@
+.folded-corner {
+  position: absolute;
+  &.top-left {
+    top: -0.1rem;
+    left: -0.1rem;
+  }
+  &.top-right {
+    top: -0.1rem;
+    right: -0.1rem;
+    transform: rotateY(180deg);
+  }
+  &.bottom-right {
+    bottom: -0.1rem;
+    right: -0.1rem;
+    transform: rotate(180deg);
+  }
+  &.bottom-left {
+    bottom: -0.1rem;
+    left: -0.1rem;
+    transform: rotateX(180deg);
+  }
+}
+.decoration-star {
+  position: absolute;
+  color: #008cff;
+  filter: drop-shadow(0 0 1rem #09b2f9);
+}
