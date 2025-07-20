@@ -1,6 +1,6 @@
 import express from "express";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { Book, User } from "../models/index.js";
+import { Book, sequelize, User } from "../models/index.js";
 import { getCartTotals } from "../utils/getCartTotals.js";
 
 const router = express.Router();
@@ -118,6 +118,44 @@ router.delete("/items/:id", async (req, res) => {
     return res
       .status(500)
       .json({ success: false, message: "Failed to remove." });
+  }
+});
+
+router.post("/checkout", async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const { userId } = req;
+    const user = await User.findByPk(userId, { transaction });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found." });
+    }
+    const cart = await user.getCart({ transaction });
+    const cartHasBooks = await cart.hasBooks({ transaction });
+    if (!cartHasBooks) {
+      return res.json({ success: true, message: "Your cart is empty." });
+    }
+
+    const books = await cart.getBooks({ transaction });
+
+    // add the books to bookshelf here
+
+    await cart.removeBooks({ transaction });
+
+    await transaction.commit();
+
+    return res.json({
+      success: true,
+      message: "Purchase completed successfully. Enjoy reading.",
+    });
+  } catch (error) {
+    await transaction.rollback();
+    console.error(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error." });
   }
 });
 
