@@ -133,8 +133,8 @@ router.post("/checkout", async (req, res) => {
         .json({ success: false, message: "User not found." });
     }
     const cart = await user.getCart({ transaction });
-    const cartHasBooks = await cart.hasBooks({ transaction });
-    if (!cartHasBooks) {
+    const booksCount = await cart.countBooks({ transaction });
+    if (!booksCount) {
       return res.json({ success: true, message: "Your cart is empty." });
     }
 
@@ -142,7 +142,7 @@ router.post("/checkout", async (req, res) => {
 
     // add the books to bookshelf here
 
-    await cart.removeBooks({ transaction });
+    await cart.removeBooks(books, { transaction });
 
     await transaction.commit();
 
