@@ -1,15 +1,15 @@
 import Modal from "react-modal";
-import styles from "./ConfirmationModal.module.css";
 import { ModalDecorations } from "./components/ModalDecorations";
 import { ModalActions } from "./components/ModalActions";
-import ModalDetails from "./components/ModalDetails";
+import { ModalDetails } from "./components/ModalDetails";
+import styles from "./ConfirmationModal.module.css";
 
 Modal.setAppElement("#root");
 
 type ConfirmationModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => Promise<void> | void;
+  onConfirm: () => Promise<void>;
   title: string;
   subtitle: string;
 };

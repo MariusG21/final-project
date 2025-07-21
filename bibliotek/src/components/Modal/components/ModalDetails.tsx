@@ -6,7 +6,7 @@ type ModalDetailsProps = {
   subtitle: string;
 };
 
-export default function ModalDetails({ title, subtitle }: ModalDetailsProps) {
+export function ModalDetails({ title, subtitle }: ModalDetailsProps) {
   return (
     <>
       <h1 className={styles["modal-title"]}>{title}</h1>
