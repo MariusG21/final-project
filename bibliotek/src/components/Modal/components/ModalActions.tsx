@@ -2,7 +2,7 @@ import styles from "./ModalActions.module.css";
 
 type ModalActionsProps = {
   onClose: () => void;
-  onConfirm: () => Promise<void> | void;
+  onConfirm: () => Promise<void>;
 };
 
 export function ModalActions({ onClose, onConfirm }: ModalActionsProps) {
