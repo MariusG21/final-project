@@ -111,3 +111,6 @@ ol {
     color: #0f5bbf;
   }
 }
+.Toastify__toast {
+  text-align: center;
+}
