@@ -7,8 +7,13 @@ import { useCartBooksContext } from "@/context/cartBooks/useCartBooksContext";
 import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext";
 import styles from "./BuyNowButton.module.css";
 
+type StatusType = "idle" | "loading" | "success" | "error";
+
 export function BuyNowButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [shouldModalClose, setShouldModalClose] = useState(true);
+  const [modalMessage, setModalMessage] = useState("");
+  const [status, setStatus] = useState<StatusType>("idle");
   const { user, accessToken } = useAuthContext();
   const { fetchCartBooks } = useCartBooksContext();
   const { fetchCartTotals, cartQuantity } = useCartTotalsContext();
@@ -27,6 +32,8 @@ export function BuyNowButton() {
       toast.error("User not found");
       return;
     }
+    setStatus("loading");
+    setModalMessage("Action in progress. Please wait.");
     try {
       const { data } = await axios.post("/api/cart/checkout", null, {
         headers: {
@@ -34,11 +41,19 @@ export function BuyNowButton() {
         },
       });
       if (data.success) {
-        toast.success(data.message || "Payment successful.");
-        fetchCartBooks();
-        fetchCartTotals();
+        setStatus("success");
+        setShouldModalClose(false);
+        setTimeout(() => {
+          toast.success(data.message || "Payment successful.");
+          setStatus("idle");
+          setIsModalOpen(false);
+          setShouldModalClose(true);
+          fetchCartBooks();
+          fetchCartTotals();
+        }, 2000);
       }
     } catch (error) {
+      setStatus("error");
       if (axios.isAxiosError(error)) {
         if (error.response) {
           const { status } = error.response;
@@ -47,14 +62,14 @@ export function BuyNowButton() {
 
           if (status === 404 || status === 401) {
             //logout
-            toast.error(message);
+            setModalMessage(message);
           } else {
-            toast.error(message);
+            setModalMessage(message);
           }
         }
       } else {
         console.error(error);
-        toast.error("Something went wrong");
+        setModalMessage("Something went wrong.");
       }
     }
   };
@@ -70,6 +85,9 @@ export function BuyNowButton() {
         onConfirm={handlePurchase}
         title="Ready to read?"
         subtitle="Just confirm your purchase to get started."
+        status={status}
+        message={modalMessage}
+        shouldClose={shouldModalClose}
       />
     </>
   );
