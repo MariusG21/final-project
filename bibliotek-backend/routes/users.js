@@ -36,6 +36,7 @@ router.post("/register", async (req, res) => {
     });
 
     await newUser.createCart();
+    await newUser.createBookshelf();
 
     return res.status(201).json({
       success: true,
