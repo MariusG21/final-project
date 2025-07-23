@@ -31,6 +31,7 @@ router.get("/", async (req, res) => {
     attributes: {
       exclude: ["description", "publishedYear", "genre", "copiesSold"],
     },
+    limit: 20,
   });
   res.status(200).json({
     success: true,
