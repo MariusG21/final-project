@@ -1,0 +1,17 @@
+.book-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1.6;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2.4rem;
+  &:hover img {
+    transform: scale(1.1);
+    filter: blur(0.15rem);
+  }
+  &:hover > * {
+    opacity: 1;
+  }
+}
