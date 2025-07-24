@@ -26,4 +26,6 @@ type BestSeller = SimilarBook & {
   place: number;
 };
 
-export type { Book, BookPreview, SimilarBook, BestSeller };
+type BookshelfBookType = Pick<Book, "id" | "image" | "title" | "author">;
+
+export type { Book, BookPreview, SimilarBook, BestSeller, BookshelfBookType };
