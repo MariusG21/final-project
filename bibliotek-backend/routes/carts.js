@@ -70,8 +70,6 @@ router.post("/items", async (req, res) => {
         .json({ success: false, message: "User not found." });
     }
 
-    const cart = await user.getCart();
-
     const bookAdded = await Book.findByPk(bookId);
     if (!bookAdded) {
       return res
@@ -79,11 +77,19 @@ router.post("/items", async (req, res) => {
         .json({ success: false, message: "Book not found." });
     }
 
-    const existingBook = await cart.hasBook(bookAdded);
-    if (existingBook) {
-      return res
-        .status(409)
-        .json({ success: false, message: "Book already in the cart." });
+    const cart = await user.getCart();
+    const bookshelf = await user.getBookshelf();
+
+    const [inCart, inBookshelf] = await Promise.all([
+      cart.hasBook(bookAdded),
+      bookshelf.hasBook(bookAdded),
+    ]);
+
+    if (inCart || inBookshelf) {
+      const message = inCart
+        ? "Book already in the cart."
+        : "You already own this book";
+      return res.status(409).json({ success: false, message });
     }
 
     await cart.addBook(bookAdded);
