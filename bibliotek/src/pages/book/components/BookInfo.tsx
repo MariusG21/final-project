@@ -23,7 +23,7 @@ export function BookInfo({ book }: BookInfoProps) {
         price={book.price}
         discount={book.discount}
       />
-      <BookActions />
+      <BookActions id={book.id} />
     </div>
   );
 }
