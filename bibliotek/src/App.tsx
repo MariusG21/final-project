@@ -8,6 +8,7 @@ import { RegisterPage } from "./pages/register/RegisterPage";
 import { BestSellersPage } from "./pages/best-sellers/BestSellersPage";
 import { BookshelfPage } from "./pages/bookshelf/BookshelfPage";
 import { NotFoundPage } from "./pages/not-found/NotFoundPage";
+import { BookmarkedPage } from "./pages/bookmarked/BookmarkedPage";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/bookshelf" element={<BookshelfPage />} />
+        <Route path="/bookmarked" element={<BookmarkedPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
