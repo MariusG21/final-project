@@ -10,7 +10,7 @@ export function BookshelfBooksGrid({ books }: BookshelfBooksGridProps) {
   return (
     <div className={styles["bookshelf-grid"]}>
       {books.map((book) => (
-        <BookshelfBook book={book} />
+        <BookshelfBook key={book.id} book={book} />
       ))}
     </div>
   );

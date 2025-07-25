@@ -1,5 +1,5 @@
 import express from "express";
-import { User } from "../models/index.js";
+import { sequelize, User } from "../models/index.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
@@ -19,9 +19,21 @@ router.get("/", async (req, res) => {
 
     const bookshelf = await user.getBookshelf();
 
-    const books = await bookshelf.getBooks();
+    const books = await bookshelf.getBooks({
+      through: {
+        attributes: ["addedAt"],
+      },
+      order: [[sequelize.col("BookshelfBooks.addedAt"), "DESC"]],
+      attributes: ["id", "title", "author", "image"],
+    });
 
-    return res.json({ success: true, data: books });
+    const cleanBooks = books.map((book) => {
+      const b = book.toJSON();
+      delete b.BookshelfBooks;
+      return b;
+    });
+
+    return res.json({ success: true, data: cleanBooks });
   } catch (error) {
     console.error(error);
     return res
