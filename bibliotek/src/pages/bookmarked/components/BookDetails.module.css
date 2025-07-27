@@ -1,0 +1,25 @@
+.book-details {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.363);
+  backdrop-filter: blur(0.6rem);
+  height: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.6rem;
+  .book-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+  }
+  .book-author {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffffc1;
+    text-align: center;
+  }
+}
