@@ -5,6 +5,8 @@ import { AuthProvider } from "@/context/auth/AuthProvider.tsx";
 import { CartBooksProvider } from "@/context/cartBooks/CartBooksProvider.tsx";
 import { CartTotalsProvider } from "@/context/cartTotals/CartTotalsProvider.tsx";
 import { ScreenSizeProvider } from "@/context/screenSize/ScreenSizeProvider.tsx";
+import { FavoriteBooksProvider } from "@/context/favoriteBooks/FavoriteBooksProvider.tsx";
+import { BookshelfProvider } from "@/context/bookshelf/BookshelfProvider.tsx";
 import App from "./App.tsx";
 import "./index.css";
 
@@ -13,11 +15,15 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <AuthProvider>
         <CartBooksProvider>
-          <CartTotalsProvider>
-            <ScreenSizeProvider>
-              <App />
-            </ScreenSizeProvider>
-          </CartTotalsProvider>
+          <FavoriteBooksProvider>
+            <BookshelfProvider>
+              <CartTotalsProvider>
+                <ScreenSizeProvider>
+                  <App />
+                </ScreenSizeProvider>
+              </CartTotalsProvider>
+            </BookshelfProvider>
+          </FavoriteBooksProvider>
         </CartBooksProvider>
       </AuthProvider>
     </BrowserRouter>
