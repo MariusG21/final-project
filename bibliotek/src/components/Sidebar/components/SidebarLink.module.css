@@ -14,6 +14,22 @@
       background-image: none;
     }
   }
+  & span {
+    width: 2.6rem;
+    height: 2.2rem;
+    background-color: #2c41c8;
+    border: 0.2rem solid #1281ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.6rem;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #fff;
+    align-self: center;
+    margin-top: 0.3rem;
+    margin-left: auto;
+  }
 }
 .links-icons {
   height: 100%;
