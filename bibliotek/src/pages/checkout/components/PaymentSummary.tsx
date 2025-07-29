@@ -3,8 +3,8 @@ import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext"
 import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
 import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
 import { SummaryRow } from "./SummaryRow";
-import styles from "./PaymentSummary.module.css";
 import { BuyNowButton } from "./BuyNowButton";
+import styles from "./PaymentSummary.module.css";
 
 export function PaymentSummary() {
   const { error, loading, cart } = useCartTotalsContext();
