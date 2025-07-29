@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useCallback, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { CartBooksContext } from "./CartBooksContext";
 import { useAuthContext } from "../auth/useAuthContext";
 import type { CartBooksStateValue } from "./types";
 
 export function CartBooksProvider({ children }: { children: ReactNode }) {
-  const { accessToken } = useAuthContext();
+  const { user, accessToken } = useAuthContext();
   const [books, setBooks] = useState<CartBooksStateValue>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -44,6 +44,12 @@ export function CartBooksProvider({ children }: { children: ReactNode }) {
       setLoading(false);
     }
   }, [accessToken]);
+
+  useEffect(() => {
+    if (user) {
+      fetchCartBooks();
+    }
+  }, [user, fetchCartBooks]);
 
   return (
     <CartBooksContext.Provider
