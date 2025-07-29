@@ -1,6 +1,6 @@
 import type { BookshelfBookType as BookmarkedBookType } from "@/types/Book";
 import { BookMedia } from "./BookMedia";
-import { ReadButton } from "./ReadButton";
+import { BookActions } from "./BookActions";
 import styles from "./BookmarkedBook.module.css";
 
 type BookmarkedBookProps = {
@@ -11,7 +11,7 @@ export function BookmarkedBook({ book }: BookmarkedBookProps) {
   return (
     <div className={styles["bookmarked-book"]}>
       <BookMedia book={book} />
-      <ReadButton id={book.id} />
+      <BookActions id={book.id} />
     </div>
   );
 }
