@@ -1,6 +1,6 @@
 import type { BestSeller } from "@/types/Book";
 import styles from "./PodiumSpot.module.css";
-import { Link } from "react-router";
+import { ViewDetailsButton } from "@/components/Buttons/ViewDetailsButton";
 
 type PodiumSpotProps = {
   bestSeller: BestSeller;
@@ -25,12 +25,12 @@ export function PodiumSpot({ bestSeller }: PodiumSpotProps) {
         <p className={styles["book-title"]}>{bestSeller.title}</p>
         <span>by</span>
         <p className={styles["book-author"]}>{bestSeller.author}</p>
-        <Link
-          to={`/books/${bestSeller.id}`}
-          className={styles["view-details-border"]}
-        >
-          <div className={styles["view-details-button"]}>View Details</div>
-        </Link>
+        <ViewDetailsButton
+          id={bestSeller.id}
+          opacity={1}
+          position="static"
+          width={90}
+        />
       </div>
     </div>
   );
