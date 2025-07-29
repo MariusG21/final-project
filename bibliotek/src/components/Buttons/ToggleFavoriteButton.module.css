@@ -1,0 +1,25 @@
+.add-to-favorite-button {
+  position: absolute;
+  color: #ffffff6a;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 0.2rem solid #ffffff6a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: #1b1a41;
+  opacity: 0;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+  &.isFavorite {
+    color: #fff;
+    background-color: #e32525;
+    border-color: #ff3030;
+  }
+}

@@ -1,0 +1,36 @@
+.add-to-favorite-border {
+  user-select: none;
+  padding: 0.2rem;
+  background: linear-gradient(to bottom, #e5ccff, #ad61ff 60%), #e5ccff;
+  cursor: pointer;
+  &:hover {
+    background-image: none;
+    box-shadow: 0rem 0rem 6rem 0rem #e5ccff;
+  }
+  &:hover .add-to-favorite-button {
+    background: radial-gradient(
+      107.04% 92.42% at 50% 7.58%,
+      #c085ff 0%,
+      #e5ccff 100%
+    );
+  }
+  &:active {
+    transform: scale(0.99);
+    box-shadow: 0rem 0rem 2rem 0rem #e5ccff;
+  }
+}
+.add-to-favorite-button {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    53.51% 92.42% at 50% 7.58%,
+    #e5ccff 0%,
+    #c085ff 100%
+  );
+  color: rgb(255, 0, 144);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

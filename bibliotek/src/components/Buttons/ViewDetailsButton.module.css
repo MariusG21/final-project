@@ -1,0 +1,37 @@
+.view-details-border {
+  user-select: none;
+  padding: 0.2rem;
+  background: linear-gradient(to bottom, #ad61ff, #591f98), #ad61ff;
+  opacity: 0;
+  cursor: pointer;
+  &:hover {
+    background-image: none;
+    box-shadow: 0rem 0rem 6rem 0rem rgba(152, 17, 255, 0.5);
+  }
+  &:hover .view-details-button {
+    background-image: radial-gradient(
+      53.51% 92.42% at 50% 7.58%,
+      #591f98 0%,
+      #ad61ff 100%
+    );
+  }
+  &:active {
+    transform: scale(0.99);
+    box-shadow: 0rem 0rem 2rem 0rem #ad61ff;
+  }
+}
+.view-details-button {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    53.51% 92.42% at 50% 7.58%,
+    #ad61ff 0%,
+    #591f98 100%
+  );
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
