@@ -66,6 +66,15 @@ export function useCheckout() {
     }
   }, [user, accessToken, fetchBookshelf, fetchCartBooks, fetchCartTotals]);
 
+  const handleBuyNowClickEvent = useCallback(() => {
+    if (!cartQuantity) {
+      toast.info("Oops! Your cart is empty.");
+      return;
+    } else {
+      setIsModalOpen(true);
+    }
+  }, [cartQuantity]);
+
   return {
     handlePurchase,
     isModalOpen,
@@ -74,5 +83,6 @@ export function useCheckout() {
     status,
     cartQuantity,
     setIsModalOpen,
+    handleBuyNowClickEvent,
   };
 }
