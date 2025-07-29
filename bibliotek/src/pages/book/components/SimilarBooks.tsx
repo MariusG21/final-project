@@ -13,9 +13,7 @@ export function SimilarBooks({ id }: SimilarBooksSliderProps) {
 
   useEffect(() => {
     const fetchSimilarBooks = async () => {
-      const { data } = await axios.get(
-        `http://localhost:3000/api/books?id=${id}`
-      );
+      const { data } = await axios.get(`/api/books?id=${id}`);
       setSimilarBooks(data.data);
     };
     fetchSimilarBooks();
