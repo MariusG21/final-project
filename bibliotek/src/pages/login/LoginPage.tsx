@@ -1,39 +1,15 @@
-import axios from "axios";
-import { useLocation, useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { toast } from "react-toastify";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { useLocation } from "react-router";
 import { AuthLayout } from "@/components/Auth/AuthLayout";
 import { AuthFooter } from "@/components/Auth/components/AuthFooter";
 import { FormGroup } from "@/components/Auth/components/FormGroup";
 import { AuthActions } from "@/components/Auth/components/AuthActions";
-import { useAuthContext } from "@/context/auth/useAuthContext";
 import styles from "./LoginPage.module.css";
-
-type LoginFormData = {
-  username: string;
-  password: string;
-};
-
-const schema = yup.object().shape({
-  username: yup
-    .string()
-    .required("Username is required")
-    .min(2, "Username must be at least 2 characters")
-    .max(20, "Username must be at most 20 characters"),
-  password: yup
-    .string()
-    .required("Password is required")
-    .min(8, "Password must be at least 8 characters")
-    .max(50, "Password must be at most 50 characters"),
-});
+import { useLogin } from "@/hooks/auth/useLogin";
+import { useLoginForm } from "@/hooks/auth/useLoginForm";
 
 export function LoginPage() {
-  const navigate = useNavigate();
   const location = useLocation();
   const defaultUsername = location.state?.username || "";
-  const { login } = useAuthContext();
 
   const {
     register,
@@ -41,50 +17,13 @@ export function LoginPage() {
     formState: { errors },
     reset,
     setError,
-  } = useForm<LoginFormData>({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      username: defaultUsername,
-      password: "",
-    },
-  });
+  } = useLoginForm(defaultUsername);
 
-  const onSubmit = async (formData: LoginFormData) => {
-    try {
-      formData.username = formData.username.trim();
-
-      const { data } = await axios.post("/api/users/login", formData);
-      login(data.data);
-      toast.success("Logged in successfully");
-      navigate("/");
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const message: string =
-          error.response?.data?.message || "Login failed.";
-        if (message === "Incorrect username.") {
-          setError("username", {
-            message,
-          });
-        } else if (message === "Incorrect password.") {
-          setError("password", {
-            message,
-          });
-        } else {
-          toast.error(message);
-          console.error(message, error);
-          reset();
-        }
-      } else {
-        toast.error("Something went wrong.");
-        console.error(error);
-        reset();
-      }
-    }
-  };
+  const { loginUser } = useLogin(reset, setError);
 
   return (
     <AuthLayout title="LOGIN" subtitle="TO YOUR ACCOUNT">
-      <form onSubmit={handleSubmit(onSubmit)} className={styles["login-form"]}>
+      <form onSubmit={handleSubmit(loginUser)} className={styles["login-form"]}>
         <FormGroup
           id="username"
           label="Username"
