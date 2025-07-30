@@ -5,55 +5,77 @@ import { Book } from "../models/index.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const { id: targetId } = req.query;
+  try {
+    const { id: targetId } = req.query;
 
-  if (targetId) {
-    const targetBook = await Book.findByPk(targetId);
-    const targetGenres = targetBook.genre;
+    if (targetId) {
+      const targetBook = await Book.findByPk(targetId);
 
-    const theRestOfTheBooks = await Book.findAll({
-      where: {
-        id: {
-          [Op.ne]: targetId,
+      if (!targetBook) {
+        return res.status(404).json({
+          success: false,
+          message: "Something went wrong.",
+        });
+      }
+
+      const targetGenres = targetBook.genre;
+
+      const theRestOfTheBooks = await Book.findAll({
+        where: {
+          id: {
+            [Op.ne]: targetId,
+          },
         },
+      });
+
+      const similarBooks = theRestOfTheBooks.filter((book) => {
+        const bookGenres = book.genre;
+        return targetGenres.some((g) => bookGenres.includes(g));
+      });
+
+      return res.status(200).json({ success: true, data: similarBooks });
+    }
+
+    const books = await Book.findAll({
+      attributes: {
+        exclude: ["description", "publishedYear", "genre", "copiesSold"],
       },
+      limit: 20,
     });
-
-    const similarBooks = theRestOfTheBooks.filter((book) => {
-      const bookGenres = book.genre;
-      return targetGenres.some((g) => bookGenres.includes(g));
+    return res.status(200).json({
+      success: true,
+      data: books,
     });
-
-    return res.status(200).json({ success: true, data: similarBooks });
+  } catch (error) {
+    console.log("Error in Get /api/books:" + error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error." });
   }
-
-  const books = await Book.findAll({
-    attributes: {
-      exclude: ["description", "publishedYear", "genre", "copiesSold"],
-    },
-    limit: 20,
-  });
-  res.status(200).json({
-    success: true,
-    data: books,
-  });
 });
 
 router.get("/:id", async (req, res) => {
-  const { id } = req.params;
-  if (id) {
+  try {
+    const { id } = req.params;
+
     const book = await Book.findByPk(id);
-    if (book) {
-      return res.status(200).json({
-        success: true,
-        data: book,
+
+    if (!book) {
+      return res.status(404).json({
+        success: false,
+        message: "Book not found. Please check the ID and try again.",
       });
     }
+    return res.status(200).json({
+      success: true,
+      data: book,
+    });
+  } catch (error) {
+    console.error("Error in GET /api/books/:id:" + error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error." });
   }
-  res.status(400).json({
-    success: false,
-    message: "Book not found. Please check the ID and try again.",
-  });
 });
 
 export default router;
