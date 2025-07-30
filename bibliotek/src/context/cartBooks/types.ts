@@ -7,6 +7,4 @@ type CartBooksContextValue = {
   loading: boolean;
 };
 
-type CartBooksStateValue = CartBook[];
-
-export type { CartBooksContextValue, CartBooksStateValue };
+export type { CartBooksContextValue };
