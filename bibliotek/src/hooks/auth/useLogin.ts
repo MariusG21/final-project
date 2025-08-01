@@ -1,18 +1,18 @@
 import axios from "axios";
-import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import type { UseFormReset, UseFormSetError } from "react-hook-form";
 import { useAuthContext } from "@/context/auth/useAuthContext";
+import { useRedirect } from "@/hooks/redirect/useRedirect";
 import type { LoginFormData } from "./useLoginForm";
 
 export function useLogin(
   reset: UseFormReset<LoginFormData>,
   setError: UseFormSetError<LoginFormData>
 ) {
-  const navigate = useNavigate();
+  const { redirectBackOr } = useRedirect();
   const { login } = useAuthContext();
 
-  const onSubmit = async (formData: LoginFormData) => {
+  const loginUser = async (formData: LoginFormData) => {
     try {
       const payload = {
         username: formData.username.trim(),
@@ -22,7 +22,7 @@ export function useLogin(
       const { data } = await axios.post("/api/users/login", payload);
       login(data.data);
       toast.success("Logged in successfully");
-      navigate("/");
+      redirectBackOr();
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const message: string =
@@ -47,5 +47,5 @@ export function useLogin(
     }
   };
 
-  return { loginUser: onSubmit };
+  return { loginUser };
 }
