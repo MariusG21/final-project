@@ -40,7 +40,7 @@ export function LoginPage() {
           error={errors.password}
         />
 
-        <AuthActions submitText="Login" cancelLink="/" />
+        <AuthActions submitLabel="Login" />
       </form>
       <AuthFooter
         text="Don't have an account?"

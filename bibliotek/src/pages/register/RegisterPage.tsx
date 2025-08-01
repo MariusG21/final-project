@@ -56,7 +56,7 @@ export function RegisterPage() {
           />
         </div>
 
-        <AuthActions submitText="Register" cancelLink="/" />
+        <AuthActions submitLabel="Register" />
       </form>
 
       <AuthFooter

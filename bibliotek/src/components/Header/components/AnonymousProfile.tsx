@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { useScreenSizeContext } from "@/context/screenSize/useScreenSizeContext";
+import { AuthButton } from "@/components/Buttons/AuthButton";
 import blankProfilePicture from "@/assets/images/blank-profile-picture.png";
 import styles from "./UserProfile.module.css";
 
@@ -17,9 +18,7 @@ export function AnonymousProfile() {
           <div className={styles["profile-picture"]}>
             <img src={blankProfilePicture} alt="" />
           </div>
-          <Link to="/login" className={styles["login-button"]}>
-            Login
-          </Link>
+          <AuthButton width={8} height={3.6} borderRadius={1.2} />
         </>
       )}
     </div>

@@ -1,20 +1,20 @@
-import { Link } from "react-router";
+import { AuthButton } from "@/components/Buttons/AuthButton";
+import { OutlineButton } from "@/components/Buttons/OutlineButton";
 import styles from "./AuthActions.module.css";
 
 type AuthActionsProps = {
-  submitText: string;
-  cancelLink: string;
+  submitLabel: "Login" | "Register";
+  cancelLabel?: "Cancel";
 };
 
-export function AuthActions({ submitText, cancelLink }: AuthActionsProps) {
+export function AuthActions({
+  submitLabel,
+  cancelLabel = "Cancel",
+}: AuthActionsProps) {
   return (
     <div className={styles["auth-actions"]}>
-      <button type="submit" className={styles["auth-button"]}>
-        {submitText}
-      </button>
-      <Link to={cancelLink} className={styles["cancel-auth"]}>
-        Cancel
-      </Link>
+      <AuthButton type="submit" label={submitLabel} action="submit" />
+      <OutlineButton label={cancelLabel} action="link" />
     </div>
   );
 }
