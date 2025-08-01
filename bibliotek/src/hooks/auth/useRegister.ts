@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import type { UseFormSetError } from "react-hook-form";
 import type { RegisterFormData } from "./useRegisterForm";
+import { useRedirect } from "../redirect/useRedirect";
 
 export function useRegister(setError: UseFormSetError<RegisterFormData>) {
-  const navigate = useNavigate();
+  const { redirectTo } = useRedirect();
 
   const registerUser = async (formData: RegisterFormData) => {
     try {
@@ -18,10 +18,11 @@ export function useRegister(setError: UseFormSetError<RegisterFormData>) {
       await axios.post("/api/users/register", payload);
 
       toast.success("Registration was successfully");
-      navigate("/login", {
+      redirectTo("/login", {
         state: {
           username: formData.username,
         },
+        replace: true,
       });
     } catch (error) {
       if (axios.isAxiosError(error)) {
