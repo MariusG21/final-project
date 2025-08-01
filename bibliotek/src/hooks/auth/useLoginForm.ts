@@ -22,12 +22,12 @@ const schema = yup
   })
   .required();
 
-export function useLoginForm(defaultUsername = "") {
+export function useLoginForm({ username, password }: LoginFormData) {
   return useForm<LoginFormData>({
     resolver: yupResolver(schema),
     defaultValues: {
-      username: defaultUsername,
-      password: "",
+      username,
+      password,
     },
   });
 }

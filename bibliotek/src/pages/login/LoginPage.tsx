@@ -1,15 +1,18 @@
+import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { AuthLayout } from "@/components/Auth/AuthLayout";
 import { AuthFooter } from "@/components/Auth/components/AuthFooter";
 import { FormGroup } from "@/components/Auth/components/FormGroup";
 import { AuthActions } from "@/components/Auth/components/AuthActions";
-import styles from "./LoginPage.module.css";
 import { useLogin } from "@/hooks/auth/useLogin";
 import { useLoginForm } from "@/hooks/auth/useLoginForm";
+import { useRedirect } from "@/hooks/redirect/useRedirect";
+import styles from "./LoginPage.module.css";
 
 export function LoginPage() {
   const location = useLocation();
-  const defaultUsername = location.state?.username || "";
+  const { username = "", password = "" } = location.state ?? {};
+  const { redirectTo } = useRedirect();
 
   const {
     register,
@@ -17,9 +20,16 @@ export function LoginPage() {
     formState: { errors },
     reset,
     setError,
-  } = useLoginForm(defaultUsername);
+  } = useLoginForm({ username, password });
 
   const { loginUser } = useLogin(reset, setError);
+
+  useEffect(() => {
+    if (username || password) {
+      reset({ username, password });
+      redirectTo(location.pathname, { replace: true });
+    }
+  }, [username, password, reset, redirectTo, location.pathname]);
 
   return (
     <AuthLayout title="LOGIN" subtitle="TO YOUR ACCOUNT">

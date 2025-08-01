@@ -22,7 +22,7 @@ export function useLogin(
       const { data } = await axios.post("/api/users/login", payload);
       login(data.data);
       toast.success("Logged in successfully");
-      redirectBackOr();
+      redirectBackOr({ replace: true });
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const message: string =

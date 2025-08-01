@@ -1,8 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import type { UseFormSetError } from "react-hook-form";
+import { useRedirect } from "@/hooks/redirect/useRedirect";
 import type { RegisterFormData } from "./useRegisterForm";
-import { useRedirect } from "../redirect/useRedirect";
 
 export function useRegister(setError: UseFormSetError<RegisterFormData>) {
   const { redirectTo } = useRedirect();
@@ -21,6 +21,7 @@ export function useRegister(setError: UseFormSetError<RegisterFormData>) {
       redirectTo("/login", {
         state: {
           username: formData.username,
+          password: formData.password,
         },
         replace: true,
       });
