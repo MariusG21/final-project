@@ -1,0 +1,18 @@
+.auth-button {
+  background: radial-gradient(circle at 100% 100%, #051462, #256bff), #091f75;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: inset 0 0 1rem #266cff;
+  transition: transform 150ms;
+
+  &:hover {
+    background-image: none;
+    box-shadow: none;
+    border: 0.2rem solid #266cff;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
