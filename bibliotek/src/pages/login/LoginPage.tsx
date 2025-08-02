@@ -7,12 +7,16 @@ import { AuthActions } from "@/components/Auth/components/AuthActions";
 import { useLogin } from "@/hooks/auth/useLogin";
 import { useLoginForm } from "@/hooks/auth/useLoginForm";
 import { useRedirect } from "@/hooks/redirect/useRedirect";
+import { useAutoFocus } from "@/hooks/ui/useAutoFocus";
+import { useArrowNavigation } from "@/hooks/ui/useArrowNavigation";
 import styles from "./LoginPage.module.css";
 
 export function LoginPage() {
   const location = useLocation();
   const { username = "", password = "" } = location.state ?? {};
   const { redirectTo } = useRedirect();
+  const { registerRef, handleKeyDown } = useArrowNavigation();
+  const usernameRef = useAutoFocus<HTMLInputElement>();
 
   const {
     register,
@@ -40,6 +44,13 @@ export function LoginPage() {
           register={register}
           placeholder="Your username"
           error={errors.username}
+          inputProps={{
+            ref: (el) => {
+              usernameRef.current = el;
+              registerRef(0)(el);
+            },
+            onKeyDown: handleKeyDown(0),
+          }}
         />
         <FormGroup
           id="password"
@@ -48,6 +59,10 @@ export function LoginPage() {
           register={register}
           placeholder="Your password"
           error={errors.password}
+          inputProps={{
+            ref: registerRef(1),
+            onKeyDown: handleKeyDown(1),
+          }}
         />
 
         <AuthActions submitLabel="Login" />
