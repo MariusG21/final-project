@@ -36,6 +36,8 @@ export function FormGroup<T extends FieldValues>({
   inputProps,
   autoComplete,
 }: FormGroupProps<T>) {
+  const { ref: registerRef, ...restRegister } = register(id);
+
   return (
     <div className={styles["form-group"]}>
       <label htmlFor={id}>{label}</label>
@@ -44,8 +46,18 @@ export function FormGroup<T extends FieldValues>({
         id={id}
         placeholder={placeholder}
         autoComplete={autoComplete ?? "off"}
-        {...register(id)}
-        {...inputProps}
+        {...restRegister}
+        ref={(el) => {
+          registerRef(el);
+          if (inputProps?.ref && typeof inputProps.ref === "function") {
+            inputProps.ref(el);
+          } else if (inputProps?.ref && typeof inputProps.ref === "object") {
+            (
+              inputProps.ref as React.RefObject<HTMLInputElement | null>
+            ).current = el;
+          }
+        }}
+        onKeyDown={inputProps?.onKeyDown}
       />
       {error && (
         <>
