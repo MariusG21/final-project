@@ -6,6 +6,7 @@ type BookshelfContextValue = {
   booksCount: number;
   loading: boolean;
   error: string | null;
+  resetBookshelf: () => void;
 };
 
 export type { BookshelfContextValue };

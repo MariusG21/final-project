@@ -3,9 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import type { Cart } from "@/types/Cart";
 
+const initialState = null;
+
 export function useCartTotals() {
   const { user, accessToken } = useAuthContext();
-  const [cart, setCart] = useState<Cart | null>(null);
+  const [cart, setCart] = useState<Cart | null>(initialState);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -50,5 +52,16 @@ export function useCartTotals() {
 
   const cartQuantity = user ? cart?.quantity ?? 0 : 0;
 
-  return { loading, error, cart, fetchCartTotals, cartQuantity };
+  const resetCartTotals = () => {
+    setCart(initialState);
+  };
+
+  return {
+    loading,
+    error,
+    cart,
+    fetchCartTotals,
+    cartQuantity,
+    resetCartTotals,
+  };
 }

@@ -4,9 +4,11 @@ import { toast } from "react-toastify";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import type { BookshelfBookType as BookmarkedBookType } from "@/types/Book";
 
+const initialState: BookmarkedBookType[] = [];
+
 export function useFavorites() {
   const { user, accessToken } = useAuthContext();
-  const [favoriteBooks, setFavoriteBooks] = useState<BookmarkedBookType[]>([]);
+  const [favoriteBooks, setFavoriteBooks] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -146,6 +148,10 @@ export function useFavorites() {
 
   const favoriteCount = favoriteBooks.length;
 
+  const resetFavorites = () => {
+    setFavoriteBooks(initialState);
+  };
+
   return {
     loading,
     error,
@@ -155,5 +161,6 @@ export function useFavorites() {
     addToFavorites,
     isFavorite,
     favoriteCount,
+    resetFavorites,
   };
 }

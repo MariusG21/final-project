@@ -5,6 +5,7 @@ type CartBooksContextValue = {
   fetchCartBooks: () => Promise<void>;
   error: string | null;
   loading: boolean;
+  resetCartBooks: () => void;
 };
 
 export type { CartBooksContextValue };

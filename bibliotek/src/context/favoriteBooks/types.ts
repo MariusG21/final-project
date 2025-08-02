@@ -9,6 +9,7 @@ type FavoriteBooksContextValue = {
   addToFavorites: (id: string) => Promise<void>;
   isFavorite: (id: string) => boolean;
   favoriteCount: number;
+  resetFavorites: () => void;
 };
 
 export type { FavoriteBooksContextValue };

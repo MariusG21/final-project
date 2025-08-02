@@ -6,6 +6,7 @@ type CartTotalsContextValue = {
   fetchCartTotals: () => Promise<void>;
   error: string | null;
   loading: boolean;
+  resetCartTotals: () => void;
 };
 
 export type { CartTotalsContextValue };

@@ -3,9 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import type { CartBook } from "@/types/Cart";
 
+const initialState: CartBook[] = [];
+
 export function useCartBooks() {
   const { user, accessToken } = useAuthContext();
-  const [books, setBooks] = useState<CartBook[]>([]);
+  const [books, setBooks] = useState(initialState);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -50,5 +52,9 @@ export function useCartBooks() {
     }
   }, [user, fetchCartBooks]);
 
-  return { loading, error, books, fetchCartBooks };
+  const resetCartBooks = () => {
+    setBooks(initialState);
+  };
+
+  return { loading, error, books, fetchCartBooks, resetCartBooks };
 }

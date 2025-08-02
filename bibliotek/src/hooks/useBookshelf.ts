@@ -3,9 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import type { BookshelfBookType } from "@/types/Book";
 
+const initialState: BookshelfBookType[] = [];
+
 export function useBookshelf() {
   const { user, accessToken } = useAuthContext();
-  const [books, setBooks] = useState<BookshelfBookType[]>([]);
+  const [books, setBooks] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -50,5 +52,9 @@ export function useBookshelf() {
 
   const booksCount = books.length;
 
-  return { books, loading, error, booksCount, fetchBookshelf };
+  const resetBookshelf = () => {
+    setBooks(initialState);
+  };
+
+  return { books, loading, error, booksCount, fetchBookshelf, resetBookshelf };
 }
