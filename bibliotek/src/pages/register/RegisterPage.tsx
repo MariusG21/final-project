@@ -60,6 +60,7 @@ export function RegisterPage() {
             register={register}
             placeholder="Your password"
             error={errors.password}
+            autoComplete="new-password"
             inputProps={{
               ref: registerRef(2),
               onKeyDown: handleKeyDown(2),
@@ -73,6 +74,7 @@ export function RegisterPage() {
             register={register}
             placeholder="Confirm password"
             error={errors.confirmPassword}
+            autoComplete="new-password"
             inputProps={{
               ref: registerRef(3),
               onKeyDown: handleKeyDown(3),

@@ -59,6 +59,7 @@ export function LoginPage() {
           register={register}
           placeholder="Your password"
           error={errors.password}
+          autoComplete="current-password"
           inputProps={{
             ref: registerRef(1),
             onKeyDown: handleKeyDown(1),

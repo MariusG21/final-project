@@ -18,6 +18,12 @@ type FormGroupProps<T extends FieldValues> = {
   inputProps: React.InputHTMLAttributes<HTMLInputElement> & {
     ref?: Ref<HTMLInputElement>;
   };
+  autoComplete?:
+    | "username"
+    | "email"
+    | "new-password"
+    | "current-password"
+    | "off";
 };
 
 export function FormGroup<T extends FieldValues>({
@@ -28,6 +34,7 @@ export function FormGroup<T extends FieldValues>({
   register,
   error,
   inputProps,
+  autoComplete,
 }: FormGroupProps<T>) {
   return (
     <div className={styles["form-group"]}>
@@ -36,6 +43,7 @@ export function FormGroup<T extends FieldValues>({
         type={type}
         id={id}
         placeholder={placeholder}
+        autoComplete={autoComplete ?? "off"}
         {...register(id)}
         {...inputProps}
       />
