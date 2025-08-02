@@ -29,7 +29,6 @@ export function AuthButton({
         redirectBackOr();
         break;
       case "submit":
-        console.log("Form submitted");
         break;
     }
   };
