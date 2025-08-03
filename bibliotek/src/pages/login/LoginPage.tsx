@@ -12,6 +12,7 @@ import { useRedirect } from "@/hooks/redirect/useRedirect";
 import { useAutoFocus } from "@/hooks/ui/useAutoFocus";
 import { useArrowNavigation } from "@/hooks/ui/useArrowNavigation";
 import styles from "./LoginPage.module.css";
+import { Title } from "@/components/Title/Title";
 
 export function LoginPage() {
   const { user } = useAuthContext();
@@ -39,52 +40,55 @@ export function LoginPage() {
   }, [username, password, reset, redirectTo, location.pathname]);
 
   return (
-    <AuthLayout title="LOGIN" subtitle="TO YOUR ACCOUNT">
-      {!user ? (
-        <>
-          <form
-            onSubmit={handleSubmit(loginUser)}
-            className={styles["login-form"]}
-          >
-            <FormGroup
-              id="username"
-              label="Username"
-              register={register}
-              placeholder="Your username"
-              error={errors.username}
-              inputProps={{
-                ref: (el) => {
-                  usernameRef.current = el;
-                  registerRef(0)(el);
-                },
-                onKeyDown: handleKeyDown(0),
-              }}
-            />
-            <FormGroup
-              id="password"
-              label="Password"
-              type="password"
-              register={register}
-              placeholder="Your password"
-              error={errors.password}
-              autoComplete="current-password"
-              inputProps={{
-                ref: registerRef(1),
-                onKeyDown: handleKeyDown(1),
-              }}
-            />
+    <>
+      <Title />
+      <AuthLayout title="LOGIN" subtitle="TO YOUR ACCOUNT">
+        {!user ? (
+          <>
+            <form
+              onSubmit={handleSubmit(loginUser)}
+              className={styles["login-form"]}
+            >
+              <FormGroup
+                id="username"
+                label="Username"
+                register={register}
+                placeholder="Your username"
+                error={errors.username}
+                inputProps={{
+                  ref: (el) => {
+                    usernameRef.current = el;
+                    registerRef(0)(el);
+                  },
+                  onKeyDown: handleKeyDown(0),
+                }}
+              />
+              <FormGroup
+                id="password"
+                label="Password"
+                type="password"
+                register={register}
+                placeholder="Your password"
+                error={errors.password}
+                autoComplete="current-password"
+                inputProps={{
+                  ref: registerRef(1),
+                  onKeyDown: handleKeyDown(1),
+                }}
+              />
 
-            <AuthActions submitLabel="Login" />
-          </form>
-          <AuthFooter
-            text="Don't have an account?"
-            linkTo="/register"
-            linkText="Register"
-          />
-        </>
-      ) : (
-        <AlreadyLoggedInMessage message="Looks like you're already in!" />
-      )}
-    </AuthLayout>
+              <AuthActions submitLabel="Login" />
+            </form>
+            <AuthFooter
+              text="Don't have an account?"
+              linkTo="/register"
+              linkText="Register"
+            />
+          </>
+        ) : (
+          <AlreadyLoggedInMessage message="Looks like you're already in!" />
+        )}
+      </AuthLayout>
+    </>
   );
 }

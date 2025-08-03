@@ -9,6 +9,7 @@ import { useRegisterForm } from "@/hooks/auth/useRegisterForm";
 import { useAutoFocus } from "@/hooks/ui/useAutoFocus";
 import { useArrowNavigation } from "@/hooks/ui/useArrowNavigation";
 import styles from "./RegisterPage.module.css";
+import { Title } from "@/components/Title/Title";
 
 export function RegisterPage() {
   const { user } = useAuthContext();
@@ -25,80 +26,83 @@ export function RegisterPage() {
   const { registerUser } = useRegister(setError);
 
   return (
-    <AuthLayout title="REGISTER" subtitle="YOUR ACCOUNT">
-      {!user ? (
-        <>
-          <form
-            onSubmit={handleSubmit(registerUser)}
-            className={styles["register-form"]}
-          >
-            <FormGroup
-              id="username"
-              label="Username"
-              register={register}
-              placeholder="Your username"
-              error={errors.username}
-              inputProps={{
-                ref: (el) => {
-                  usernameRef.current = el;
-                  registerRef(0)(el);
-                },
-                onKeyDown: handleKeyDown(0),
-              }}
-            />
-            <FormGroup
-              id="email"
-              label="Email"
-              register={register}
-              placeholder="Your email"
-              error={errors.email}
-              inputProps={{
-                ref: registerRef(1),
-                onKeyDown: handleKeyDown(1),
-              }}
-            />
-            <div className={styles["password-group"]}>
+    <>
+      <Title />
+      <AuthLayout title="REGISTER" subtitle="YOUR ACCOUNT">
+        {!user ? (
+          <>
+            <form
+              onSubmit={handleSubmit(registerUser)}
+              className={styles["register-form"]}
+            >
               <FormGroup
-                id="password"
-                label="Password"
-                type="password"
+                id="username"
+                label="Username"
                 register={register}
-                placeholder="Your password"
-                error={errors.password}
-                autoComplete="new-password"
+                placeholder="Your username"
+                error={errors.username}
                 inputProps={{
-                  ref: registerRef(2),
-                  onKeyDown: handleKeyDown(2),
+                  ref: (el) => {
+                    usernameRef.current = el;
+                    registerRef(0)(el);
+                  },
+                  onKeyDown: handleKeyDown(0),
                 }}
               />
-
               <FormGroup
-                id="confirmPassword"
-                label="Confirm Password"
-                type="password"
+                id="email"
+                label="Email"
                 register={register}
-                placeholder="Confirm password"
-                error={errors.confirmPassword}
-                autoComplete="new-password"
+                placeholder="Your email"
+                error={errors.email}
                 inputProps={{
-                  ref: registerRef(3),
-                  onKeyDown: handleKeyDown(3),
+                  ref: registerRef(1),
+                  onKeyDown: handleKeyDown(1),
                 }}
               />
-            </div>
+              <div className={styles["password-group"]}>
+                <FormGroup
+                  id="password"
+                  label="Password"
+                  type="password"
+                  register={register}
+                  placeholder="Your password"
+                  error={errors.password}
+                  autoComplete="new-password"
+                  inputProps={{
+                    ref: registerRef(2),
+                    onKeyDown: handleKeyDown(2),
+                  }}
+                />
 
-            <AuthActions submitLabel="Register" />
-          </form>
+                <FormGroup
+                  id="confirmPassword"
+                  label="Confirm Password"
+                  type="password"
+                  register={register}
+                  placeholder="Confirm password"
+                  error={errors.confirmPassword}
+                  autoComplete="new-password"
+                  inputProps={{
+                    ref: registerRef(3),
+                    onKeyDown: handleKeyDown(3),
+                  }}
+                />
+              </div>
 
-          <AuthFooter
-            text="Already have an account?"
-            linkTo="/login"
-            linkText="Login"
-          />
-        </>
-      ) : (
-        <AlreadyLoggedInMessage message="Looks like you're already in!" />
-      )}
-    </AuthLayout>
+              <AuthActions submitLabel="Register" />
+            </form>
+
+            <AuthFooter
+              text="Already have an account?"
+              linkTo="/login"
+              linkText="Login"
+            />
+          </>
+        ) : (
+          <AlreadyLoggedInMessage message="Looks like you're already in!" />
+        )}
+      </AuthLayout>
+    </>
   );
 }

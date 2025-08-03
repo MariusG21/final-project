@@ -9,6 +9,7 @@ import { InfoMessage } from "@/components/InfoMessages/InfoMessage/InfoMessage";
 import { LoginMessage } from "@/components/InfoMessages/LoginMessage/LoginMessage";
 import { BookshelfBooksGrid } from "./components/BookshelfBooksGrid";
 import styles from "./BookshelfPage.module.css";
+import { Title } from "@/components/Title/Title";
 
 export function BookshelfPage() {
   const { user } = useAuthContext();
@@ -16,6 +17,7 @@ export function BookshelfPage() {
 
   return (
     <>
+      <Title />
       <Header />
       <Sidebar />
       <SecondHeader title="Bookshelf" />

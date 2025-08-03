@@ -9,6 +9,7 @@ import { InfoMessage } from "@/components/InfoMessages/InfoMessage/InfoMessage";
 import { useFavoriteBooksContext } from "@/context/favoriteBooks/useFavoriteBooksContext";
 import { BookmarkedBooksGrid } from "./components/BookmarkedBooksGrid";
 import styles from "./BookmarkedPage.module.css";
+import { Title } from "@/components/Title/Title";
 
 export function BookmarkedPage() {
   const { user } = useAuthContext();
@@ -16,6 +17,7 @@ export function BookmarkedPage() {
 
   return (
     <>
+      <Title />
       <Header />
       <Sidebar />
       <SecondHeader title="Favorites" />

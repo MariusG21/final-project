@@ -6,12 +6,14 @@ import { useBestSellers } from "@/hooks/bestSellers/useBestSellers";
 import { BestSellersHeader } from "./components/BestSellersHeader";
 import { Podium } from "./components/Podium";
 import styles from "./BestSellersPage.module.css";
+import { Title } from "@/components/Title/Title";
 
 export function BestSellersPage() {
   const { isLoading, error, bestSellers } = useBestSellers();
 
   return (
     <>
+      <Title />
       <Header />
       <Sidebar />
       <main className={styles["best-sellers-page"]}>

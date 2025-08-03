@@ -6,12 +6,14 @@ import { SecondHeader } from "@/components/SecondHeader/SecondHeader";
 import { PaymentSummary } from "./components/PaymentSummary";
 import { CartItemsGrid } from "./components/CartItemsGrid";
 import styles from "./Checkout.module.css";
+import { Title } from "@/components/Title/Title";
 
 export function CheckoutPage() {
   const { user } = useAuthContext();
 
   return (
     <>
+      <Title />
       <Header />
       <Sidebar />
       <div className={styles["checkout-page"]}>
