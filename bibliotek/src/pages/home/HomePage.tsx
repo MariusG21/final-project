@@ -2,8 +2,8 @@ import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
 import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
-import { usePageTitle } from "@/hooks/usePageTitle";
-import { useBooks } from "@/hooks/useBooks";
+import { usePageTitle } from "@/hooks/common/usePageTitle";
+import { useBooks } from "@/hooks/books/useBooks";
 import { BooksGrid } from "./components/BooksGrid";
 import styles from "./HomePage.module.css";
 

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { CartTotalsContext } from "./CartTotalsContext";
-import { useCartTotals } from "@/hooks/useCartTotals";
+import { useCartTotals } from "@/hooks/cart/useCartTotals";
 
 export function CartTotalsProvider({ children }: { children: ReactNode }) {
   const { ...cartTotalsLogic } = useCartTotals();

@@ -1,6 +1,6 @@
 import { ConfirmationModal } from "@/components/Modal/ConfirmationModal";
 import { CartButton } from "@/components/Buttons/CartButton";
-import { useCheckout } from "@/hooks/useCheckout";
+import { useCheckout } from "@/hooks/cart/useCheckout";
 
 export function BuyNowButton() {
   const {

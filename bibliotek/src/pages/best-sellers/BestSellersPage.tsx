@@ -2,7 +2,7 @@ import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
 import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
-import { useBestSellers } from "@/hooks/useBestSellers";
+import { useBestSellers } from "@/hooks/bestSellers/useBestSellers";
 import { BestSellersHeader } from "./components/BestSellersHeader";
 import { Podium } from "./components/Podium";
 import styles from "./BestSellersPage.module.css";

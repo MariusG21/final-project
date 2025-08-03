@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext";
 import { useScreenSizeContext } from "@/context/screenSize/useScreenSizeContext";
-import { useAddToCart } from "@/hooks/useAddToCart";
+import { useAddToCart } from "@/hooks/cart/useAddToCart";
 import cartIcon from "@/assets/images/icons/cart-icon.png";
 import styles from "./CartButton.module.css";
 

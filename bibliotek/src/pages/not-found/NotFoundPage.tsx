@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header/Header";
-import { usePageTitle } from "@/hooks/usePageTitle";
+import { usePageTitle } from "@/hooks/common/usePageTitle";
 import "./NotFoundPage.css";
 import { Link } from "react-router";
 

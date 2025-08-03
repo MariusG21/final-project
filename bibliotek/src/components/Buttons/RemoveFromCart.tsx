@@ -1,5 +1,5 @@
 import type { Book } from "@/types/Book";
-import { useRemoveFromCart } from "@/hooks/useRemoveFromCart";
+import { useRemoveFromCart } from "@/hooks/cart/useRemoveFromCart";
 import styles from "./RemoveFromCart.module.css";
 
 type RemoveFromCartProps = Pick<Book, "id"> & {

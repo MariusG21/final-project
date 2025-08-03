@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useBookshelf } from "@/hooks/useBookshelf";
+import { useBookshelf } from "@/hooks/bookshelf/useBookshelf";
 import { BookshelfContext } from "./BookshelfContext";
 
 export function BookshelfProvider({ children }: { children: ReactNode }) {

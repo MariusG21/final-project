@@ -1,5 +1,5 @@
 import { useFavoriteBooksContext } from "@/context/favoriteBooks/useFavoriteBooksContext";
-import { useRemoveFromCart } from "@/hooks/useRemoveFromCart";
+import { useRemoveFromCart } from "@/hooks/cart/useRemoveFromCart";
 import type { Book } from "@/types/Book";
 import styles from "./AddToFavorite.module.css";
 

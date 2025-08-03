@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useCartBooks } from "@/hooks/useCartBooks";
+import { useCartBooks } from "@/hooks/cart/useCartBooks";
 import { CartBooksContext } from "./CartBooksContext";
 
 export function CartBooksProvider({ children }: { children: ReactNode }) {
