@@ -3,10 +3,10 @@ import { useCartBooks } from "@/hooks/cart/useCartBooks";
 import { CartBooksContext } from "./CartBooksContext";
 
 export function CartBooksProvider({ children }: { children: ReactNode }) {
-  const { ...cartBooks } = useCartBooks();
+  const cartBooks = useCartBooks();
 
   return (
-    <CartBooksContext.Provider value={{ ...cartBooks }}>
+    <CartBooksContext.Provider value={cartBooks}>
       {children}
     </CartBooksContext.Provider>
   );

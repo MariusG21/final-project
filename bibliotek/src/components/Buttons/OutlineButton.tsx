@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-import { useAuthContext } from "@/context/auth/useAuthContext";
 import { useRedirect } from "@/hooks/redirect/useRedirect";
+import { useLogout } from "@/hooks/common/useLogout";
 import styles from "./OutlineButton.module.css";
 
 type OutlineButtonProps = {
@@ -10,7 +10,7 @@ type OutlineButtonProps = {
 
 export function OutlineButton({ label, action }: OutlineButtonProps) {
   const { redirectBackOr } = useRedirect();
-  const { logout } = useAuthContext();
+  const logout = useLogout();
 
   const handleEvent = () => {
     switch (action) {

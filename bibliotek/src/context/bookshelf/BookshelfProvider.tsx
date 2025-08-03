@@ -3,10 +3,10 @@ import { useBookshelf } from "@/hooks/bookshelf/useBookshelf";
 import { BookshelfContext } from "./BookshelfContext";
 
 export function BookshelfProvider({ children }: { children: ReactNode }) {
-  const { ...bookshelf } = useBookshelf();
+  const bookshelf = useBookshelf();
 
   return (
-    <BookshelfContext.Provider value={{ ...bookshelf }}>
+    <BookshelfContext.Provider value={bookshelf}>
       {children}
     </BookshelfContext.Provider>
   );
