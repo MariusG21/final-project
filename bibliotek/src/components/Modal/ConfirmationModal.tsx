@@ -18,6 +18,7 @@ type ConfirmationModalProps = {
   status: "idle" | "loading" | "success" | "error";
   message?: string;
   shouldClose?: boolean;
+  noPadding?: boolean;
 };
 
 export function ConfirmationModal({
@@ -29,12 +30,15 @@ export function ConfirmationModal({
   status,
   message,
   shouldClose = true,
+  noPadding,
 }: ConfirmationModalProps) {
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
-      overlayClassName={styles["modal-overlay"]}
+      overlayClassName={`${styles["modal-overlay"]} ${
+        noPadding ? styles["no-padding"] : ""
+      }`}
       className={styles["modal-content"]}
       contentLabel="Confirmation Modal"
       shouldCloseOnOverlayClick={shouldClose}

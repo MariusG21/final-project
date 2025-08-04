@@ -9,6 +9,9 @@
   transition: ease-out padding 300ms;
   z-index: 10000;
 }
+.modal-overlay.no-padding {
+  padding-left: 0rem;
+}
 @media (max-width: 768px) {
   .modal-overlay {
     padding-left: 0;
@@ -16,7 +19,7 @@
 }
 .modal-content {
   width: 50%;
-  min-width: 25rem;
+  min-width: 40rem;
   max-height: 30rem;
   background-image: url("/images/background/modal-bg.png");
   background-color: #0e0c49;
