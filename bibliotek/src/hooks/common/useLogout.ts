@@ -2,15 +2,19 @@ import { useAuthContext } from "@/context/auth/useAuthContext";
 import { useResetAll } from "@/hooks/common/useResetAll";
 import { useRedirect } from "@/hooks/redirect/useRedirect";
 
-export function useLogout() {
-  const { redirectBackOr } = useRedirect();
+export function useLogout(goHome = false) {
+  const { redirectBackOr, redirectTo } = useRedirect();
   const { logout } = useAuthContext();
   const resetAllStates = useResetAll();
 
   const logoutUser = () => {
     logout();
     resetAllStates();
-    redirectBackOr();
+    if (goHome) {
+      redirectTo("/");
+    } else {
+      redirectBackOr();
+    }
   };
 
   return logoutUser;
