@@ -13,11 +13,13 @@ const schema = yup
   .object({
     username: yup
       .string()
+      .trim()
       .required("Username is required")
       .min(2, "Username must be at least 2 characters")
       .max(20, "Username must be at most 20 characters"),
     email: yup
       .string()
+      .trim()
       .required("Email is required")
       .email("Invalid email format")
       .max(50, "Email must be at most 50 characters"),
