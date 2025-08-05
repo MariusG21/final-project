@@ -8,6 +8,7 @@ import { ScreenSizeProvider } from "@/context/screenSize/ScreenSizeProvider.tsx"
 import { FavoriteBooksProvider } from "@/context/favoriteBooks/FavoriteBooksProvider.tsx";
 import { BookshelfProvider } from "@/context/bookshelf/BookshelfProvider.tsx";
 import { PreviousPathProvider } from "@/context/previousPath/PreviousPathProvider.tsx";
+import AuthErrorProvider from "@/context/authError/AuthErrorProvider.tsx";
 import App from "./App.tsx";
 import "./index.css";
 
@@ -15,19 +16,21 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <CartBooksProvider>
-          <FavoriteBooksProvider>
-            <BookshelfProvider>
-              <CartTotalsProvider>
-                <ScreenSizeProvider>
-                  <PreviousPathProvider>
-                    <App />
-                  </PreviousPathProvider>
-                </ScreenSizeProvider>
-              </CartTotalsProvider>
-            </BookshelfProvider>
-          </FavoriteBooksProvider>
-        </CartBooksProvider>
+        <AuthErrorProvider>
+          <CartBooksProvider>
+            <FavoriteBooksProvider>
+              <BookshelfProvider>
+                <CartTotalsProvider>
+                  <ScreenSizeProvider>
+                    <PreviousPathProvider>
+                      <App />
+                    </PreviousPathProvider>
+                  </ScreenSizeProvider>
+                </CartTotalsProvider>
+              </BookshelfProvider>
+            </FavoriteBooksProvider>
+          </CartBooksProvider>
+        </AuthErrorProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>
