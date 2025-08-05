@@ -1,10 +1,10 @@
 import Modal from "react-modal";
+import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
+import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
+import { SuccessMessage } from "@/components/InfoMessages/SuccessMessage/SuccessMessage";
 import { ModalDecorations } from "./components/ModalDecorations";
 import { ModalActions } from "./components/ModalActions";
 import { ModalDetails } from "./components/ModalDetails";
-import { LoadingMessage } from "../InfoMessages/LoadingMessage/LoadingMessage";
-import { ErrorMessage } from "../InfoMessages/ErrorMessage/ErrorMessage";
-import { SuccessMessage } from "../InfoMessages/SuccessMessage/SuccessMessage";
 import styles from "./ConfirmationModal.module.css";
 
 Modal.setAppElement("#root");

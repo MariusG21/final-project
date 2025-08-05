@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { useRedirect } from "@/hooks/redirect/useRedirect";
-import { ConfirmationModal } from "@/components/Modal/ConfirmationModal";
+import { ConfirmationModal } from "@/components/Modal/ConfirmationModal/ConfirmationModal";
 import { useLogoutModal } from "@/hooks/modal/useLogoutModal";
 import styles from "./OutlineButton.module.css";
 
