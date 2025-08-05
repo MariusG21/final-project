@@ -1,5 +1,8 @@
 import { Routes, Route } from "react-router";
 import { ToastContainer } from "react-toastify";
+import { UnauthorizedModal } from "@/components/Modal/UnauthorizedModal/UnauthorizedModal";
+import { useAuthErrorContext } from "@/context/authError/useAuthErrorContext";
+import { useUnauthorizedModalLogout } from "@/hooks/modal/useUnauthorizedModalLogout";
 import { HomePage } from "./pages/home/HomePage";
 import { BookPage } from "./pages/book/BookPage";
 import { CheckoutPage } from "./pages/checkout/CheckoutPage";
@@ -12,6 +15,10 @@ import { BookmarkedPage } from "./pages/bookmarked/BookmarkedPage";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  useUnauthorizedModalLogout();
+  const { showUnauthorizedModal, closeUnauthorizedModal } =
+    useAuthErrorContext();
+
   return (
     <>
       <ToastContainer
@@ -20,6 +27,10 @@ function App() {
         autoClose={500}
         hideProgressBar
         pauseOnHover={false}
+      />
+      <UnauthorizedModal
+        isOpen={showUnauthorizedModal}
+        onClose={closeUnauthorizedModal}
       />
       <Routes>
         <Route index element={<HomePage />} />
