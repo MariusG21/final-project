@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import type { BookPreview } from "@/types/Book";
 
 export function useBooks() {
@@ -7,31 +8,38 @@ export function useBooks() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const fetchBooks = useCallback(async (retry = false) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const { data } = await axios.get("/api/books");
-      setBooks(data.data);
-    } catch (error) {
-      if (!retry) return fetchBooks(true);
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search");
 
-      console.error("Error fetching books:", error);
+  const fetchBooks = useCallback(
+    async (retry = false) => {
+      const url = search ? `/api/books?search=${search}` : "/api/books";
+      setIsLoading(true);
+      setError(null);
+      try {
+        const { data } = await axios.get(url);
+        setBooks(data.data);
+      } catch (error) {
+        if (!retry) return fetchBooks(true);
 
-      if (axios.isAxiosError(error)) {
-        const message =
-          error.response?.data?.message ||
-          "Failed to load books. Try again later.";
-        setError(message);
-      } else {
-        setError("Something went wrong.");
+        console.error("Error fetching books:", error);
+
+        if (axios.isAxiosError(error)) {
+          const message =
+            error.response?.data?.message ||
+            "Failed to load books. Try again later.";
+          setError(message);
+        } else {
+          setError("Something went wrong.");
+        }
+
+        setBooks([]);
+      } finally {
+        setIsLoading(false);
       }
-
-      setBooks([]);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+    },
+    [search]
+  );
 
   useEffect(() => {
     fetchBooks();
