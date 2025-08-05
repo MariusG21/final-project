@@ -3,11 +3,13 @@ import { toast } from "react-toastify";
 import { useAuthContext } from "@/context/auth/useAuthContext";
 import { useCartBooksContext } from "@/context/cartBooks/useCartBooksContext";
 import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext";
+import { useAuthErrorContext } from "@/context/authError/useAuthErrorContext";
 
 export function useAddToCart() {
   const { user, accessToken } = useAuthContext();
   const { fetchCartBooks } = useCartBooksContext();
   const { fetchCartTotals } = useCartTotalsContext();
+  const { triggerUnauthorizedLogout } = useAuthErrorContext();
 
   const addToCart = async (id: string) => {
     if (!user) {
@@ -40,7 +42,9 @@ export function useAddToCart() {
 
           if (status === 409) {
             toast.info(message);
-          } else if (status === 404 || status === 401) {
+          } else if (status === 401) {
+            triggerUnauthorizedLogout();
+          } else if (status === 404) {
             toast.error(message);
           } else {
             toast.error(message);

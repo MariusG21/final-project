@@ -5,6 +5,7 @@ import { useAuthContext } from "@/context/auth/useAuthContext";
 import { useBookshelfContext } from "@/context/bookshelf/useBookshelfContext";
 import { useCartBooksContext } from "@/context/cartBooks/useCartBooksContext";
 import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext";
+import { useAuthErrorContext } from "@/context/authError/useAuthErrorContext";
 
 type StatusType = "idle" | "loading" | "success" | "error";
 
@@ -17,6 +18,7 @@ export function useCheckout() {
   const { fetchCartBooks } = useCartBooksContext();
   const { fetchCartTotals, cartQuantity } = useCartTotalsContext();
   const { fetchBookshelf } = useBookshelfContext();
+  const { triggerUnauthorizedLogout } = useAuthErrorContext();
 
   const handlePurchase = useCallback(async () => {
     if (!user) {
@@ -52,8 +54,10 @@ export function useCheckout() {
           const message =
             error.response.data?.message || "Unexpected server error.";
 
-          if (status === 404 || status === 401) {
-            //logout
+          if (status === 401) {
+            setIsModalOpen(false);
+            triggerUnauthorizedLogout();
+          } else if (status === 404) {
             setModalMessage(message);
           } else {
             setModalMessage(message);
@@ -64,7 +68,14 @@ export function useCheckout() {
         setModalMessage("Something went wrong.");
       }
     }
-  }, [user, accessToken, fetchBookshelf, fetchCartBooks, fetchCartTotals]);
+  }, [
+    user,
+    accessToken,
+    fetchBookshelf,
+    fetchCartBooks,
+    fetchCartTotals,
+    triggerUnauthorizedLogout,
+  ]);
 
   const handleBuyNowClickEvent = useCallback(() => {
     if (!cartQuantity) {

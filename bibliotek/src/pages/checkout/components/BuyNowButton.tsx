@@ -1,4 +1,4 @@
-import { ConfirmationModal } from "@/components/Modal/ConfirmationModal";
+import { ConfirmationModal } from "@/components/Modal/ConfirmationModal/ConfirmationModal";
 import { CartButton } from "@/components/Buttons/CartButton";
 import { useCheckout } from "@/hooks/cart/useCheckout";
 

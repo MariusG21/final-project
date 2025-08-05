@@ -2,6 +2,7 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuthContext } from "@/context/auth/useAuthContext";
+import { useAuthErrorContext } from "@/context/authError/useAuthErrorContext";
 import type { BookshelfBookType as BookmarkedBookType } from "@/types/Book";
 
 const initialState: BookmarkedBookType[] = [];
@@ -11,6 +12,7 @@ export function useFavorites() {
   const [favoriteBooks, setFavoriteBooks] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { triggerUnauthorizedLogout } = useAuthErrorContext();
 
   const fetchFavorites = useCallback(async () => {
     setLoading(true);
@@ -77,7 +79,9 @@ export function useFavorites() {
 
             if (status === 409) {
               toast.info(message);
-            } else if (status === 404 || status === 401) {
+            } else if (status === 401) {
+              triggerUnauthorizedLogout();
+            } else if (status === 404) {
               toast.error(message);
             } else {
               toast.error(message);
@@ -89,7 +93,7 @@ export function useFavorites() {
         }
       }
     },
-    [user, fetchFavorites, accessToken]
+    [user, fetchFavorites, accessToken, triggerUnauthorizedLogout]
   );
 
   const addToFavorites = useCallback(
@@ -124,7 +128,9 @@ export function useFavorites() {
 
             if (status === 409) {
               toast.info(message);
-            } else if (status === 404 || status === 401) {
+            } else if (status === 401) {
+              triggerUnauthorizedLogout();
+            } else if (status === 404) {
               toast.error(message);
             } else {
               toast.error(message);
@@ -136,7 +142,7 @@ export function useFavorites() {
         }
       }
     },
-    [accessToken, user, fetchFavorites]
+    [accessToken, user, fetchFavorites, triggerUnauthorizedLogout]
   );
 
   const isFavorite = useCallback(
