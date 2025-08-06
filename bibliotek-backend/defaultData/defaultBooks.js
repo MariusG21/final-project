@@ -15,6 +15,8 @@ export const defaultBooks = [
       "Set in the racially charged American South of the 1930s, To Kill a Mockingbird follows young Scout Finch as she grows up witnessing her father, Atticus Finch, defend a Black man falsely accused of a crime. Through Scout\u2019s innocent eyes, the novel explores themes of justice, morality, and compassion in a divided society. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo porro excepturi doloribus dolorem dignissimos minus incidunt vel labore tempora commodi, quae ullam maxime expedita aspernatur totam possimus temporibus magni eum.Nihil laudantium voluptatum facere, voluptatem, nam illo harum dolorem repudiandae aut libero officiis! Quae ipsam nisi amet eius culpa magnam blanditiis labore sunt, tempore aliquid ad harum quam unde consequatur?",
     publishedYear: 1960,
     keywords: [
+      "Harper Lee",
+      "To Kill a Mockingbird",
       "classic",
       "racism",
       "justice",
@@ -57,6 +59,7 @@ export const defaultBooks = [
       "Set in a totalitarian society ruled by the Party and its omnipresent leader, Big Brother, “1984” follows Winston Smith as he secretly rebels against oppressive control, surveillance, and the distortion of truth. It's a chilling portrayal of a future where independent thought is a crime. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo porro excepturi doloribus dolorem dignissimos minus incidunt vel labore tempora commodi, quae ullam maxime expedita aspernatur totam possimus temporibus magni eum.Nihil laudantium voluptatum facere, voluptatem, nam illo harum dolorem repudiandae aut libero officiis! Quae ipsam nisi amet eius culpa magnam blanditiis labore sunt, tempore aliquid ad harum quam unde consequatur?",
     publishedYear: 1949,
     keywords: [
+      "George Orwell",
       "dystopia",
       "totalitarianism",
       "surveillance",
@@ -102,6 +105,8 @@ export const defaultBooks = [
       "The Great Gatsby tells the story of Jay Gatsby, a mysterious millionaire known for his extravagant parties. Set in the Roaring Twenties, the novel explores Gatsby\u2019s obsessive love for Daisy Buchanan and critiques the American Dream, revealing the emptiness beneath wealth and glamour. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo porro excepturi doloribus dolorem dignissimos minus incidunt vel labore tempora commodi, quae ullam maxime expedita aspernatur totam possimus temporibus magni eum.Nihil laudantium voluptatum facere, voluptatem, nam illo harum dolorem repudiandae aut libero officiis! Quae ipsam nisi amet eius culpa magnam blanditiis labore sunt, tempore aliquid ad harum quam unde consequatur?",
     publishedYear: 1925,
     keywords: [
+      "F. Scott Fitzgerald",
+      "The Great Gatsby",
       "American Dream",
       "wealth",
       "love",
