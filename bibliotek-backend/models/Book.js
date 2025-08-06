@@ -69,8 +69,32 @@ export const Book = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    keywords: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      get() {
+        const rawValue = this.getDataValue("keywords");
+        return rawValue.split(",");
+      },
+      set(value) {
+        const arrayToString = value.join(",");
+        this.setDataValue("keywords", arrayToString);
+      },
+    },
   },
   {
+    defaultScope: {
+      attributes: {
+        exclude: ["keywords"],
+      },
+    },
+    scopes: {
+      withKeywords: {
+        attributes: {
+          include: ["keywords"],
+        },
+      },
+    },
     timestamps: false,
   }
 );
