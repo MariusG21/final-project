@@ -1,12 +1,14 @@
 import express from "express";
+import fuzzysort from "fuzzysort";
 import { Op } from "sequelize";
 import { Book } from "../models/index.js";
+import { searchBooks } from "../utils/searchBooks.js";
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const { id: targetId } = req.query;
+    const { id: targetId, search } = req.query;
 
     if (targetId) {
       const targetBook = await Book.findByPk(targetId);
@@ -34,6 +36,15 @@ router.get("/", async (req, res) => {
       });
 
       return res.status(200).json({ success: true, data: similarBooks });
+    }
+
+    if (search) {
+      const matchedBooks = await searchBooks(search);
+
+      return res.status(200).json({
+        success: true,
+        data: matchedBooks,
+      });
     }
 
     const books = await Book.findAll({
