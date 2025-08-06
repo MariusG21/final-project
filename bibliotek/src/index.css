@@ -71,4 +71,26 @@ ol {
 }
 .Toastify__toast {
   text-align: center;
+  background-color: #040332;
+  border-radius: 1rem;
+}
+.Toastify__toast--error {
+  border: 0.2rem solid #d32c2c;
+  background-image: linear-gradient(to right, #471a1a, #290f24, #040332);
+  color: #ffb3b3;
+}
+.Toastify__toast--success {
+  border: 0.2rem solid #2e7d32;
+  background-image: linear-gradient(to right, #1b3a1b, #10241c, #040332);
+  color: #b9fbc0;
+}
+.Toastify__toast--warning {
+  border: 0.2rem solid #ed6c02;
+  background-image: linear-gradient(to right, #4e3a14, #2f2111, #040332);
+  color: #ffe0b2;
+}
+.Toastify__toast--info {
+  border: 0.2rem solid #0288d1;
+  background-image: linear-gradient(to right, #133e59, #0a2642, #040332);
+  color: #b3e5fc;
 }

@@ -27,6 +27,7 @@ function App() {
         autoClose={500}
         hideProgressBar
         pauseOnHover={false}
+        closeButton={false}
       />
       <UnauthorizedModal
         isOpen={showUnauthorizedModal}
