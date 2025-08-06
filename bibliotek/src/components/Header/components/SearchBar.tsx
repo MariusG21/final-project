@@ -16,6 +16,7 @@ export function SearchBar() {
         value={search}
         onChange={handleChangeEvent}
         onKeyDown={handleKeyDown}
+        autoComplete="off"
       />
       <button
         type="button"
