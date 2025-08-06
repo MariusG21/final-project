@@ -53,7 +53,7 @@ export function usePageTitle(bookTitle?: string) {
         break;
       }
       case "/best-sellers": {
-        setTitle("Top 3 books");
+        setTitle("Reader's choice");
         break;
       }
       case "/profile": {
