@@ -1,5 +1,5 @@
 import { SidebarLink } from "./SidebarLink";
-import { BookOpen, Bookmark, Clock, TrendingUp } from "lucide-react";
+import { BookOpen, Bookmark, Clock, TrendingUp, HomeIcon } from "lucide-react";
 import styles from "./SidebarNav.module.css";
 import { useFavoriteBooksContext } from "@/context/favoriteBooks/useFavoriteBooksContext";
 import { useBookshelfContext } from "@/context/bookshelf/useBookshelfContext";
@@ -10,6 +10,7 @@ export function SidebarNav() {
 
   return (
     <nav className={styles["book-menu"]}>
+      <SidebarLink to="/" label="Home" icon={HomeIcon} />
       <SidebarLink to="/bookshelf" label="Bookshelf" icon={BookOpen}>
         {booksCount !== 0 && <span>{booksCount}</span>}
       </SidebarLink>
