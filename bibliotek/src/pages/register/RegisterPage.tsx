@@ -1,4 +1,5 @@
 import { useAuthContext } from "@/context/auth/useAuthContext";
+import { TitleAndFavicon } from "@/components/Title/TitleAndFavicon";
 import { AuthLayout } from "@/components/Auth/AuthLayout";
 import { FormGroup } from "@/components/Auth/components/FormGroup";
 import { AuthActions } from "@/components/Auth/components/AuthActions";
@@ -9,7 +10,6 @@ import { useRegisterForm } from "@/hooks/auth/useRegisterForm";
 import { useAutoFocus } from "@/hooks/ui/useAutoFocus";
 import { useArrowNavigation } from "@/hooks/ui/useArrowNavigation";
 import styles from "./RegisterPage.module.css";
-import { Title } from "@/components/Title/Title";
 
 export function RegisterPage() {
   const { user } = useAuthContext();
@@ -27,7 +27,7 @@ export function RegisterPage() {
 
   return (
     <>
-      <Title />
+      <TitleAndFavicon />
       <AuthLayout title="REGISTER" subtitle="YOUR ACCOUNT">
         {!user ? (
           <>

@@ -1,4 +1,4 @@
-import { Title } from "@/components/Title/Title";
+import { TitleAndFavicon } from "@/components/Title/TitleAndFavicon";
 import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
@@ -12,7 +12,7 @@ export function HomePage() {
   const { isLoading, error, books } = useBooks();
   return (
     <>
-      <Title />
+      <TitleAndFavicon />
       <Header />
       <Sidebar />
       <main className={styles["home-page"]}>

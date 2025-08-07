@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { useAuthContext } from "@/context/auth/useAuthContext";
+import { TitleAndFavicon } from "@/components/Title/TitleAndFavicon";
 import { AuthLayout } from "@/components/Auth/AuthLayout";
 import { AuthFooter } from "@/components/Auth/components/AuthFooter";
 import { FormGroup } from "@/components/Auth/components/FormGroup";
@@ -12,7 +13,6 @@ import { useRedirect } from "@/hooks/redirect/useRedirect";
 import { useAutoFocus } from "@/hooks/ui/useAutoFocus";
 import { useArrowNavigation } from "@/hooks/ui/useArrowNavigation";
 import styles from "./LoginPage.module.css";
-import { Title } from "@/components/Title/Title";
 
 export function LoginPage() {
   const { user } = useAuthContext();
@@ -41,7 +41,7 @@ export function LoginPage() {
 
   return (
     <>
-      <Title />
+      <TitleAndFavicon />
       <AuthLayout title="LOGIN" subtitle="TO YOUR ACCOUNT">
         {!user ? (
           <>

@@ -1,3 +1,4 @@
+import { TitleAndFavicon } from "@/components/Title/TitleAndFavicon";
 import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { SecondHeader } from "@/components/SecondHeader/SecondHeader";
@@ -9,7 +10,6 @@ import { InfoMessage } from "@/components/InfoMessages/InfoMessage/InfoMessage";
 import { LoginMessage } from "@/components/InfoMessages/LoginMessage/LoginMessage";
 import { BookshelfBooksGrid } from "./components/BookshelfBooksGrid";
 import styles from "./BookshelfPage.module.css";
-import { Title } from "@/components/Title/Title";
 
 export function BookshelfPage() {
   const { user } = useAuthContext();
@@ -17,7 +17,7 @@ export function BookshelfPage() {
 
   return (
     <>
-      <Title />
+      <TitleAndFavicon />
       <Header />
       <Sidebar />
       <SecondHeader title="Bookshelf" />

@@ -1,3 +1,4 @@
+import { TitleAndFavicon } from "@/components/Title/TitleAndFavicon";
 import { Header } from "@/components/Header/Header";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
@@ -6,14 +7,13 @@ import { useBestSellers } from "@/hooks/bestSellers/useBestSellers";
 import { BestSellersHeader } from "./components/BestSellersHeader";
 import { Podium } from "./components/Podium";
 import styles from "./BestSellersPage.module.css";
-import { Title } from "@/components/Title/Title";
 
 export function BestSellersPage() {
   const { isLoading, error, bestSellers } = useBestSellers();
 
   return (
     <>
-      <Title />
+      <TitleAndFavicon />
       <Header />
       <Sidebar />
       <main className={styles["best-sellers-page"]}>
