@@ -56,7 +56,7 @@ router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    const existingUser = await User.findOne({
+    const existingUser = await User.scope("withPassword").findOne({
       where: { username: username.trim() },
       raw: true,
     });
@@ -77,7 +77,7 @@ router.post("/login", async (req, res) => {
         .json({ success: false, message: "Incorrect password." });
     }
 
-    const { password: _, updatedAt: __, ...user } = existingUser;
+    const { password: _, ...user } = existingUser;
     const accessToken = jwt.sign({ id: user.id }, JWT_SECRET, {
       expiresIn: "1h",
     });
