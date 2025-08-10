@@ -11,6 +11,7 @@ import { PreviousPathProvider } from "@/context/previousPath/PreviousPathProvide
 import AuthErrorProvider from "@/context/authError/AuthErrorProvider.tsx";
 import App from "./App.tsx";
 import "./index.css";
+import { UserProfileProvider } from "@/context/userProfile/UserProfileProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -23,7 +24,9 @@ createRoot(document.getElementById("root")!).render(
                 <CartTotalsProvider>
                   <ScreenSizeProvider>
                     <PreviousPathProvider>
-                      <App />
+                      <UserProfileProvider>
+                        <App />
+                      </UserProfileProvider>
                     </PreviousPathProvider>
                   </ScreenSizeProvider>
                 </CartTotalsProvider>
