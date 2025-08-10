@@ -10,6 +10,7 @@ import bestSellersRouter from "./routes/bestSellers.js";
 import cartRouter from "./routes/carts.js";
 import bookshelfRouter from "./routes/bookshelves.js";
 import favoriteListRouter from "./routes/favoriteBooks.js";
+import userProfileRouter from "./routes/userProfile.js";
 
 const app = express();
 dotenv.config();
@@ -25,6 +26,7 @@ app.use("/api/best-sellers", bestSellersRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/bookshelf", bookshelfRouter);
 app.use("/api/favorite-books", favoriteListRouter);
+app.use("/api/user-profile", userProfileRouter);
 
 const startServer = async () => {
   await sequelize.sync({ force: true });
