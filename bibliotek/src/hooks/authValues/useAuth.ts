@@ -26,5 +26,15 @@ export function useAuth() {
     setAuth(initialValue);
   };
 
-  return { ...auth, login, logout };
+  const updateUsername = (newUsername: string) => {
+    if (!auth.user) return;
+
+    const updatedUser = { ...auth.user, username: newUsername };
+    const updatedAuth = { ...auth, user: updatedUser };
+
+    setAuth(updatedAuth);
+    localStorage.setItem(storageKey, JSON.stringify(updatedAuth));
+  };
+
+  return { ...auth, login, logout, updateUsername };
 }

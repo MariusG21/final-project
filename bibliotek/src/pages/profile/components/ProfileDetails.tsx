@@ -15,8 +15,8 @@ export function ProfileDetails({
 }: ProfileDetailsProps) {
   return (
     <div className={styles["profile-details"]}>
-      <InfoGroup label="Username:" value={username} />
-      <InfoGroup label="Gmail:" value={email} />
+      <InfoGroup label="Username:" value={username} field="username" />
+      <InfoGroup label="Email:" value={email} field="email" />
       <InfoGroup label="Joined:" value={joined} isDate noEditable />
       <InfoGroup label="Id:" value={id} noEditable />
     </div>

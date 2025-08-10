@@ -29,6 +29,16 @@ select {
   outline: none;
 }
 
+textarea::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+textarea {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 a {
   text-decoration: none;
   color: inherit;

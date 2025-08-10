@@ -1,7 +1,7 @@
 import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
+import type { UserDetails } from "@/types/User";
 import { ExtraInfoGroup } from "./ExtraInfoGroup";
 import styles from "./ProfileExtraInfo.module.css";
-import type { UserDetails } from "@/types/User";
 
 type ProfileExtraInfoProps = {
   userDetails: UserDetails;
@@ -17,14 +17,17 @@ export function ProfileExtraInfo({ userDetails }: ProfileExtraInfoProps) {
 
       <div className={styles["content"]}>
         <ExtraInfoGroup
+          field="favoriteBook"
           label="Favorite Book:"
           value={userDetails.favoriteBook}
         />
         <ExtraInfoGroup
+          field="favoriteGenre"
           label="Favorite Genre:"
           value={userDetails.favoriteGenre}
         />
         <ExtraInfoGroup
+          field="favoriteAuthor"
           label="Favorite Author:"
           value={userDetails.favoriteAuthor}
         />

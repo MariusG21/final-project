@@ -22,3 +22,24 @@
   color: #a0a0c0;
   font-weight: 500;
 }
+.edit-bio {
+  width: 100%;
+  height: 10rem;
+  min-width: none;
+  font-size: 1.6rem;
+  border: 0.2rem solid #0b165f;
+  background-color: #0d0c3e;
+  color: #fff;
+  border-radius: 1.5rem;
+  padding: 0.6rem 1rem;
+  resize: none;
+  &:hover {
+    border-color: #1b2b94;
+  }
+  &:focus {
+    border-color: #3c4fcc;
+  }
+  &::placeholder {
+    opacity: 0.5;
+  }
+}
