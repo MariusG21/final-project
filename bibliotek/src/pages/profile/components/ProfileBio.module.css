@@ -1,0 +1,24 @@
+.profile-bio {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.bio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.label {
+  font-weight: 700;
+  color: transparent;
+  font-size: 1.8rem;
+  background-image: linear-gradient(to top, #ffa843, #fff);
+  background-clip: text;
+}
+.bio {
+  font-size: 1.6rem;
+  color: #a0a0c0;
+  font-weight: 500;
+}

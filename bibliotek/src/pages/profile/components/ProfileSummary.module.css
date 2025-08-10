@@ -1,0 +1,11 @@
+.profile-summary {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border: 0.2rem solid rgba(3, 238, 255, 0.136);
+  border-radius: 1rem;
+}

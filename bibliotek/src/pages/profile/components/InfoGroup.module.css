@@ -1,0 +1,29 @@
+.info-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.info-value {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.6rem;
+  color: #a0a0c0;
+  font-weight: 500;
+}
+.label {
+  font-weight: 700;
+  color: #e0def4;
+  width: 9rem;
+  white-space: nowrap;
+  font-size: 1.8rem;
+}
+
+.value {
+  line-height: 3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 23rem;
+}
