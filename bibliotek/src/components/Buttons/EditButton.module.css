@@ -1,0 +1,38 @@
+.edit-border {
+  user-select: none;
+  padding: 0.2rem;
+  background: linear-gradient(to bottom, #00d4ff, #004b51), #00d4ff;
+  cursor: pointer;
+  &:hover {
+    background-image: none;
+    box-shadow: 0rem 0rem 6rem 0rem #00d4ff90;
+  }
+  &:hover .edit-button {
+    background-image: radial-gradient(
+      53.51% 92.42% at 50% 7.58%,
+      #004b51 0%,
+      #00d4ff 100%
+    );
+  }
+  &:active {
+    transform: scale(0.99);
+    box-shadow: 0rem 0rem 2rem 0rem #00d4ff90;
+  }
+}
+
+.edit-button {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    53.51% 92.42% at 50% 7.58%,
+    #00b2d1 0%,
+    #004b51 100%
+  );
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
