@@ -1,7 +1,8 @@
 import express from "express";
+import bcrypt from "bcrypt";
+import { Op } from "sequelize";
 import { User } from "../models/index.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { Op } from "sequelize";
 
 const router = express.Router();
 
@@ -93,6 +94,44 @@ router.put("/me", async (req, res) => {
     });
   } catch (error) {
     console.error("Error updating user profile:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+});
+
+router.put("/me/password", async (req, res) => {
+  try {
+    const { userId } = req;
+    const { currentPassword, newPassword } = req.body;
+
+    const user = await User.scope("withPassword").findByPk(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Current password is incorrect",
+      });
+    }
+
+    user.password = await bcrypt.hash(newPassword, 8);
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Password updated successfully",
+    });
+  } catch (error) {
+    console.error("Error updating password:", error);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
