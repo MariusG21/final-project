@@ -29,7 +29,7 @@ app.use("/api/favorite-books", favoriteListRouter);
 app.use("/api/user-profile", userProfileRouter);
 
 const startServer = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync();
   // await Book.destroy({ where: {} });
   const booksCount = await Book.count();
   if (booksCount === 0) {
