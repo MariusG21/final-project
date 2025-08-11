@@ -25,6 +25,7 @@ export function SeparatorLine({
     marginBottom: `${marginBottom}rem`,
     marginLeft: `${marginLeft}rem`,
     marginRight: `${marginRight}rem`,
+    flexShrink: 0,
   };
 
   return (

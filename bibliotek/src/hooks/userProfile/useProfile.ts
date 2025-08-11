@@ -7,10 +7,13 @@ import { useAuthErrorContext } from "@/context/authError/useAuthErrorContext";
 import type { Body } from "@/context/userProfile/types";
 import type { UserDetails } from "@/types/User";
 
+const initialState: UserDetails | null = null;
+
 export function useProfile() {
   const { accessToken, updateUsername } = useAuthContext();
-
-  const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
+  const [userDetails, setUserDetails] = useState<UserDetails | null>(
+    initialState
+  );
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isEditingProfile, setIsEditingProfile] = useState(false);
@@ -98,8 +101,42 @@ export function useProfile() {
     [accessToken, triggerUnauthorizedLogout, fetchUserDetails, updateUsername]
   );
 
+  const deleteUser = useCallback(async () => {
+    try {
+      const { data } = await axios.delete("/api/user-profile/me", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      if (data.success) {
+        toast.warn(data.message || "User deleted successfully.");
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          const { status } = error.response;
+          const message =
+            error.response.data?.message || "Unexpected server error.";
+
+          if (status === 401) {
+            triggerUnauthorizedLogout();
+          } else {
+            toast.error(message);
+          }
+        }
+      } else {
+        console.error(error);
+        toast.error("Something went wrong.");
+      }
+    }
+  }, [accessToken, triggerUnauthorizedLogout]);
+
   const toggleEditMode = () => {
     setIsEditingProfile((prev) => !prev);
+  };
+
+  const resetProfile = () => {
+    setUserDetails(initialState);
   };
 
   return {
@@ -110,5 +147,7 @@ export function useProfile() {
     error,
     isEditingProfile,
     toggleEditMode,
+    deleteUser,
+    resetProfile,
   };
 }

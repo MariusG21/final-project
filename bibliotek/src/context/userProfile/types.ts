@@ -17,6 +17,8 @@ type UserProfileContextValue = {
   error: string | null;
   isEditingProfile: boolean;
   toggleEditMode: () => void;
+  resetProfile: () => void;
+  deleteUser: () => Promise<void>;
 };
 
 export type { UserProfileContextValue, Body };

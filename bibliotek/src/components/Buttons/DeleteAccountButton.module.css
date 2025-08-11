@@ -1,0 +1,36 @@
+.delete-account-border {
+  user-select: none;
+  padding: 0.2rem;
+  background: linear-gradient(to bottom, #ff0133, #510000), #ff0133;
+  cursor: pointer;
+  &:hover {
+    background-image: none;
+    box-shadow: 0 0 6rem 0 #ff013390;
+  }
+  &:hover .delete-account-button {
+    background-image: radial-gradient(
+      53.51% 92.42% at 50% 7.58%,
+      #510000 0%,
+      #ff0133 100%
+    );
+  }
+  &:active {
+    transform: scale(0.99);
+    box-shadow: 0 0 2rem 0 #ff013390;
+  }
+}
+.delete-account-button {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    53.51% 92.42% at 50% 7.58%,
+    #c4001c 0%,
+    #510000 100%
+  );
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

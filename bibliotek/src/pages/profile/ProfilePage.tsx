@@ -12,7 +12,9 @@ import { useAuthContext } from "@/context/auth/useAuthContext";
 import { ProfileSummary } from "./components/ProfileSummary";
 import { ProfileBio } from "./components/ProfileBio";
 import { ProfileExtraInfo } from "./components/ProfileExtraInfo";
+import { ProfileActions } from "./components/ProfileActions";
 import styles from "./ProfilePage.module.css";
+import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
 
 export function ProfilePage() {
   const { user } = useAuthContext();
@@ -44,6 +46,8 @@ export function ProfilePage() {
               <ProfileSummary userDetails={userDetails} />
               <ProfileBio bio={userDetails.bio} />
               <ProfileExtraInfo userDetails={userDetails} />
+              <SeparatorLine color="secondary" marginBottom={-1} />
+              <ProfileActions />
               <ToggleEditMode />
             </div>
           )

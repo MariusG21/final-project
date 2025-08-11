@@ -5,11 +5,22 @@ import { useLogoutModal } from "@/hooks/modal/useLogoutModal";
 import styles from "./OutlineButton.module.css";
 
 type OutlineButtonProps = {
+  width?: number;
+  height?: number;
+  widthUnits?: "rem" | "%";
+  borderRadius?: number;
   label: string;
   action: "link" | "logout";
 };
 
-export function OutlineButton({ label, action }: OutlineButtonProps) {
+export function OutlineButton({
+  width = 12,
+  height = 4.6,
+  widthUnits = "rem",
+  borderRadius = 10,
+  label,
+  action,
+}: OutlineButtonProps) {
   const { redirectBackOr } = useRedirect();
 
   const {
@@ -35,12 +46,19 @@ export function OutlineButton({ label, action }: OutlineButtonProps) {
     }
   };
 
+  const style = {
+    width: `${width + widthUnits}`,
+    height: `${height}rem`,
+    borderRadius: `${borderRadius}rem`,
+  };
+
   return (
     <>
       <div
         role="button"
         onClick={handleEvent}
         className={styles["outline-button"]}
+        style={style}
       >
         {label}
       </div>
