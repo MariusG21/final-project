@@ -104,7 +104,7 @@ router.put("/me", async (req, res) => {
 router.put("/me/password", async (req, res) => {
   try {
     const { userId } = req;
-    const { currentPassword, newPassword } = req.body;
+    const { currentPassword, password } = req.body;
 
     const user = await User.scope("withPassword").findByPk(userId);
 
@@ -123,7 +123,7 @@ router.put("/me/password", async (req, res) => {
       });
     }
 
-    user.password = await bcrypt.hash(newPassword, 8);
+    user.password = await bcrypt.hash(password, 8);
     await user.save();
 
     return res.status(200).json({

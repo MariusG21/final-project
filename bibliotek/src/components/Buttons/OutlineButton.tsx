@@ -10,7 +10,8 @@ type OutlineButtonProps = {
   widthUnits?: "rem" | "%";
   borderRadius?: number;
   label: string;
-  action: "link" | "logout";
+  action: "link" | "logout" | "cancel";
+  cancel?: () => void;
 };
 
 export function OutlineButton({
@@ -20,6 +21,7 @@ export function OutlineButton({
   borderRadius = 10,
   label,
   action,
+  cancel,
 }: OutlineButtonProps) {
   const { redirectBackOr } = useRedirect();
 
@@ -40,6 +42,11 @@ export function OutlineButton({
         break;
       case "link":
         redirectBackOr();
+        break;
+      case "cancel":
+        if (cancel) {
+          cancel();
+        }
         break;
       default:
         toast.error("Something went wrong");
