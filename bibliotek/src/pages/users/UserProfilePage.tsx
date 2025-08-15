@@ -36,7 +36,10 @@ export function UserProfilePage() {
       <TitleAndFavicon pageTitle={userDetails?.username} />
       <Header />
       <Sidebar />
-      <SecondHeader title={getProfileTitle(userDetails?.username)} />
+      <SecondHeader
+        title={getProfileTitle(userDetails?.username)}
+        withBackButton
+      />
       <main className={styles["profile-page"]}>
         {isLoading ? (
           <LoadingMessage message="Your profile is loading... " />
