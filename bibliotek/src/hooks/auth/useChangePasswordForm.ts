@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 export type ChangePasswordFormData = {
   currentPassword: string;
   password: string;
+  confirmPassword: string;
 };
 
 const schema = yup
@@ -19,6 +20,10 @@ const schema = yup
       .required("Password is required")
       .min(8, "Password must be at least 8 characters")
       .max(50, "Password must be at most 50 characters"),
+    confirmPassword: yup
+      .string()
+      .required("Confirm password is required")
+      .oneOf([yup.ref("password")], "Passwords must match"),
   })
   .required();
 
@@ -28,6 +33,7 @@ export function useChangePasswordForm() {
     defaultValues: {
       currentPassword: "",
       password: "",
+      confirmPassword: "",
     },
   });
 }

@@ -79,7 +79,7 @@ export function OutlineButton({
           status={status}
           message={modalMessage}
           shouldClose={shouldModalClose}
-          noPadding={true}
+          noPadding
         ></ConfirmationModal>
       )}
     </>

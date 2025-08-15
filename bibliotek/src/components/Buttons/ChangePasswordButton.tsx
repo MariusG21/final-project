@@ -1,7 +1,6 @@
 import { FormModal } from "@/components/Modal/FormModal/FormModal";
 import styles from "./ChangePasswordButton.module.css";
-import { useChangePasswordForm } from "@/hooks/auth/useChangePasswordForm";
-import { useChangePassword } from "@/hooks/auth/useChangePassword";
+import { useState } from "react";
 
 type ChangePasswordButtonProps = {
   width?: number;
@@ -16,11 +15,7 @@ export function ChangePasswordButton({
   widthUnits = "rem",
   borderRadius = 10,
 }: ChangePasswordButtonProps) {
-  const formHook = useChangePasswordForm();
-  const { reset, setError } = formHook;
-
-  const changePasswordHook = useChangePassword(reset, setError);
-  const { openModal } = changePasswordHook;
+  const [openModalFn, setOpenModalFn] = useState<() => void>(() => () => {});
 
   const style = {
     width: `${width + widthUnits}`,
@@ -30,9 +25,9 @@ export function ChangePasswordButton({
   return (
     <>
       <div
+        onClick={() => openModalFn()}
         className={styles["change-password-border"]}
         style={style}
-        onClick={openModal}
       >
         <div
           className={styles["change-password-button"]}
@@ -41,7 +36,7 @@ export function ChangePasswordButton({
           Change Password
         </div>
       </div>
-      <FormModal formHook={formHook} changePasswordHook={changePasswordHook} />
+      <FormModal setOpenModalFn={setOpenModalFn} />
     </>
   );
 }

@@ -5,7 +5,7 @@ type AuthButtonProps = {
   width: number;
   height: number;
   borderRadius: number;
-  label: "Login" | "Register" | "Back" | "Change";
+  label: "Login" | "Register" | "Back" | "Update";
   type: "button" | "submit";
   action: "link" | "submit" | "goBack";
 };

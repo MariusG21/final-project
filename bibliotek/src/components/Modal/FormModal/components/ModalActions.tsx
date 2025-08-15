@@ -6,11 +6,11 @@ type ModalActionsProps = {
   onCancel: () => void;
 };
 
-export function ModalActions(onCancel: ModalActionsProps) {
+export function ModalActions({ onCancel }: ModalActionsProps) {
   return (
     <div className={styles["modal-actions"]}>
-      <OutlineButton label="Cancel" action="cancel" cancel={() => onCancel} />
-      <AuthButton type="submit" action="submit" label="Change" />
+      <OutlineButton label="Cancel" action="cancel" cancel={onCancel} />
+      <AuthButton type="submit" action="submit" label="Update" />
     </div>
   );
 }
