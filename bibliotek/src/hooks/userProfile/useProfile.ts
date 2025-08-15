@@ -21,7 +21,7 @@ export function useProfile() {
   const { triggerUnauthorizedLogout } = useAuthErrorContext();
 
   useEffect(() => {
-    if (location.pathname !== "/profile") {
+    if (location.pathname !== "/profile/me") {
       setIsEditingProfile(false);
     }
   }, [location]);

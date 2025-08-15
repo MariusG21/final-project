@@ -9,7 +9,7 @@ export function LoggedInUserProfile({ username }: { username: string }) {
   return isSmall ? (
     <div className={styles["user-profile"]}>
       <Link
-        to="/profile"
+        to="/profile/me"
         title={username}
         className={styles["profile-picture"]}
       >
@@ -17,7 +17,7 @@ export function LoggedInUserProfile({ username }: { username: string }) {
       </Link>
     </div>
   ) : (
-    <Link to="/profile" className={styles["user-profile"]}>
+    <Link to="/profile/me" className={styles["user-profile"]}>
       <div className={styles["profile-picture"]}>
         {getFirstLetter(username)}
       </div>

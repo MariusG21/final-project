@@ -1,7 +1,7 @@
 import { usePageTitleAndFavicon } from "@/hooks/common/usePageTitleAndFavicon";
 
-export function TitleAndFavicon({ bookTitle }: { bookTitle?: string }) {
-  const { title, favicon } = usePageTitleAndFavicon(bookTitle);
+export function TitleAndFavicon({ pageTitle }: { pageTitle?: string }) {
+  const { title, favicon } = usePageTitleAndFavicon(pageTitle);
 
   return (
     <>

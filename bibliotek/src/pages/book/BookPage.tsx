@@ -13,7 +13,7 @@ export function BookPage() {
 
   return (
     <>
-      <TitleAndFavicon bookTitle={book?.title} />
+      <TitleAndFavicon pageTitle={book?.title} />
       <Header />
       <Sidebar />
       <main className={styles["book-page"]}>

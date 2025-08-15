@@ -3,8 +3,9 @@ import { useLocation, useMatch } from "react-router";
 import { useCartTotalsContext } from "@/context/cartTotals/useCartTotalsContext";
 import { useBookshelfContext } from "@/context/bookshelf/useBookshelfContext";
 import { useFavoriteBooksContext } from "@/context/favoriteBooks/useFavoriteBooksContext";
+import { getProfileTitle } from "@/utils/getProfileTitle";
 
-export function usePageTitleAndFavicon(bookTitle?: string) {
+export function usePageTitleAndFavicon(pageTitle?: string) {
   const location = useLocation();
   const [title, setTitle] = useState("Bibliotek");
   const [favicon, setFavicon] = useState("/home-favicon.png");
@@ -13,17 +14,24 @@ export function usePageTitleAndFavicon(bookTitle?: string) {
   const { favoriteCount } = useFavoriteBooksContext();
   const bookPage = useMatch("/books/:id");
   const readPage = useMatch("read/:id");
+  const anotherProfilePage = useMatch("/profile/:id");
 
   useEffect(() => {
     if (bookPage) {
-      setTitle(bookTitle ? `Bibliotek | ${bookTitle}` : "Bibliotek");
+      setTitle(pageTitle ? `Bibliotek | ${pageTitle}` : "Bibliotek");
       setFavicon("/book-favicon.png");
       return;
     }
 
     if (readPage) {
-      setTitle(bookTitle ? `Reading now: ${bookTitle}` : "Reading mode");
+      setTitle(pageTitle ? `Reading now: ${pageTitle}` : "Reading mode");
       setFavicon("/read-favicon.png");
+      return;
+    }
+
+    if (anotherProfilePage && location.pathname !== "/profile/me") {
+      setTitle(getProfileTitle(pageTitle));
+      setFavicon("/profile-favicon.png");
       return;
     }
 
@@ -72,8 +80,8 @@ export function usePageTitleAndFavicon(bookTitle?: string) {
         setFavicon("/best-favicon.png");
         break;
       }
-      case "/profile": {
-        setTitle("My profile");
+      case "/profile/me": {
+        setTitle("Your Profile");
         setFavicon("/profile-favicon.png");
         break;
       }
@@ -93,8 +101,9 @@ export function usePageTitleAndFavicon(bookTitle?: string) {
     favoriteCount,
     cartQuantity,
     bookPage,
-    bookTitle,
+    pageTitle,
     readPage,
+    anotherProfilePage,
   ]);
 
   return { title, favicon };
