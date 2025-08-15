@@ -6,9 +6,10 @@ import { authMiddleware } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.use(authMiddleware);
+// private route to get user profile
+// accessible only to authenticated users
 
-router.get("/me", async (req, res) => {
+router.get("/me", authMiddleware, async (req, res) => {
   try {
     const { userId } = req;
 
@@ -34,7 +35,7 @@ router.get("/me", async (req, res) => {
   }
 });
 
-router.put("/me", async (req, res) => {
+router.put("/me", authMiddleware, async (req, res) => {
   try {
     const { userId } = req;
     const updates = req.body;
@@ -101,7 +102,7 @@ router.put("/me", async (req, res) => {
   }
 });
 
-router.put("/me/password", async (req, res) => {
+router.put("/me/password", authMiddleware, async (req, res) => {
   try {
     const { userId } = req;
     const { currentPassword, password } = req.body;
@@ -139,7 +140,7 @@ router.put("/me/password", async (req, res) => {
   }
 });
 
-router.delete("/me", async (req, res) => {
+router.delete("/me", authMiddleware, async (req, res) => {
   try {
     const { userId } = req;
 
@@ -160,6 +161,32 @@ router.delete("/me", async (req, res) => {
     });
   } catch (error) {
     console.error("Error deleting user account:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const user = await User.scope("withDetails").findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: user,
+    });
+  } catch (error) {
+    console.error("Error fetching user profile by ID:", error);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
