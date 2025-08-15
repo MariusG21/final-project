@@ -13,6 +13,7 @@ import { BookshelfPage } from "./pages/bookshelf/BookshelfPage";
 import { NotFoundPage } from "./pages/not-found/NotFoundPage";
 import { BookmarkedPage } from "./pages/bookmarked/BookmarkedPage";
 import { ProfilePage } from "./pages/profile/ProfilePage";
+import { UserProfilePage } from "./pages/users/UserProfilePage";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -43,7 +44,8 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/bookshelf" element={<BookshelfPage />} />
         <Route path="/bookmarked" element={<BookmarkedPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/me" element={<ProfilePage />} />
+        <Route path="/profile/:id" element={<UserProfilePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
