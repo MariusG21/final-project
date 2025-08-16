@@ -4,6 +4,7 @@ import { Cart } from "./Cart.js";
 import { Bookshelf } from "./Bookshelf.js";
 import { BookshelfBooks } from "./BookshelfBooks.js";
 import { FavoriteList } from "./FavoriteList.js";
+import { Comment } from "./Comment.js";
 
 User.hasOne(Cart, { onDelete: "CASCADE" });
 Cart.belongsTo(User, { onDelete: "CASCADE" });
@@ -22,3 +23,9 @@ FavoriteList.belongsTo(User, { onDelete: "CASCADE" });
 
 FavoriteList.belongsToMany(Book, { through: "BookmarkedBooks" });
 Book.belongsToMany(FavoriteList, { through: "BookmarkedBooks" });
+
+User.hasMany(Comment, { onDelete: "CASCADE", foreignKey: "userId" });
+Comment.belongsTo(User, { onDelete: "CASCADE", foreignKey: "userId" });
+
+Book.hasMany(Comment, { onDelete: "CASCADE", foreignKey: "bookId" });
+Comment.belongsTo(Book, { onDelete: "CASCADE", foreignKey: "bookId" });

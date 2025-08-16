@@ -6,7 +6,17 @@ import { Cart } from "./Cart.js";
 import { Bookshelf } from "./Bookshelf.js";
 import { BookshelfBooks } from "./BookshelfBooks.js";
 import { FavoriteList } from "./FavoriteList.js";
+import { Comment } from "./Comment.js";
 
 import "./associations.js";
 
-export { sequelize, User, Book, Cart, Bookshelf, BookshelfBooks, FavoriteList };
+export {
+  sequelize,
+  User,
+  Book,
+  Cart,
+  Bookshelf,
+  BookshelfBooks,
+  FavoriteList,
+  Comment,
+};
