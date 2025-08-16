@@ -4,8 +4,8 @@ import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
 import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
 import { useBookDetails } from "@/hooks/bookDetails/useBookDetails";
-import { BookDetails } from "./components/BookDetails";
-import { SimilarBooks } from "./components/SimilarBooks";
+import { BookDetails } from "./components/BookDetails/BookDetails";
+import { SimilarBooks } from "./components/SimilarBooks/SimilarBooks";
 import styles from "./BookPage.module.css";
 
 export function BookPage() {
