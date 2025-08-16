@@ -1,41 +1,29 @@
-import axios from "axios";
-import { useState, useEffect, useRef } from "react";
-import type { Book, SimilarBook } from "@/types/Book";
+import { InfoMessage } from "@/components/InfoMessages/InfoMessage/InfoMessage";
+import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
+import { useSimilarBooks } from "@/hooks/bookDetails/useSimilarBooks";
+import { useSlider } from "@/hooks/ui/useSlider";
 import { SimilarBooksHeader } from "./SimilarBooksHeader";
 import { SimilarBooksSlider } from "./SimilarBooksSlider";
 import styles from "./SimilarBooks.module.css";
 
-type SimilarBooksSliderProps = Pick<Book, "id">;
-
-export function SimilarBooks({ id }: SimilarBooksSliderProps) {
-  const [similarBooks, setSimilarBooks] = useState<SimilarBook[]>([]);
-  const sliderRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const fetchSimilarBooks = async () => {
-      const { data } = await axios.get(`/api/books?id=${id}`);
-      setSimilarBooks(data.data);
-    };
-    fetchSimilarBooks();
-  }, [id]);
-
-  const scrollLeft = () => {
-    sliderRef.current?.scrollBy({ left: -200, behavior: "smooth" });
-  };
-  const scrollRight = () => {
-    sliderRef.current?.scrollBy({ left: 200, behavior: "smooth" });
-  };
+export function SimilarBooks() {
+  const { isLoading, similarBooks } = useSimilarBooks();
+  const { sliderRef, scrollLeft, scrollRight } = useSlider();
 
   return (
     <section className={styles["similar-books"]}>
       <SimilarBooksHeader onLeft={scrollLeft} onRight={scrollRight} />
 
-      {similarBooks.length > 0 ? (
-        <SimilarBooksSlider similarBooks={similarBooks} sliderRef={sliderRef} />
-      ) : (
-        <div className={styles["not-found-books"]}>
-          <h1>No similar books were found 🥲</h1>
+      {isLoading ? (
+        <div className={styles["placeholder-container"]}>
+          <LoadingMessage message="Loading similar books..." />
         </div>
+      ) : similarBooks.length === 0 ? (
+        <div className={styles["placeholder-container"]}>
+          <InfoMessage message="No similar books found." />
+        </div>
+      ) : (
+        <SimilarBooksSlider similarBooks={similarBooks} sliderRef={sliderRef} />
       )}
     </section>
   );

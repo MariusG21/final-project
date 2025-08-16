@@ -25,7 +25,7 @@ export function BookPage() {
           book && (
             <>
               <BookDetails book={book} />
-              <SimilarBooks id={book.id} />
+              <SimilarBooks />
             </>
           )
         )}
