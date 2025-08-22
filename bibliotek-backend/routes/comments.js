@@ -1,6 +1,6 @@
 import express from "express";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { Book, User } from "../models/index.js";
+import { Book, Comment, User } from "../models/index.js";
 
 const router = express.Router();
 
@@ -68,6 +68,86 @@ router.post("/:bookId", async (req, res) => {
     });
   } catch (error) {
     console.error("Error creating comment:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+});
+
+router.put("/:commentId", async (req, res) => {
+  try {
+    const { commentId } = req.params;
+    const { content } = req.body;
+    const { userId } = req;
+
+    if (!content || content.trim() === "") {
+      return res.status(400).json({
+        success: false,
+        message: "Comment content cannot be empty",
+      });
+    }
+
+    const comment = await Comment.findByPk(commentId);
+    if (!comment) {
+      return res.status(404).json({
+        success: false,
+        message: "Comment not found",
+      });
+    }
+
+    if (comment.userId !== userId) {
+      return res.status(403).json({
+        success: false,
+        message: "You can only edit your own comments",
+      });
+    }
+
+    comment.content = content;
+    comment.edited = true;
+    await comment.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Comment updated successfully",
+    });
+  } catch (error) {
+    console.error("Error updating comment:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+});
+
+router.delete("/:commentId", async (req, res) => {
+  try {
+    const { commentId } = req.params;
+    const { userId } = req;
+
+    const comment = await Comment.findByPk(commentId);
+    if (!comment) {
+      return res.status(404).json({
+        success: false,
+        message: "Comment not found",
+      });
+    }
+
+    if (comment.userId !== userId) {
+      return res.status(403).json({
+        success: false,
+        message: "You can only delete your own comments",
+      });
+    }
+
+    await comment.destroy();
+
+    return res.status(200).json({
+      success: true,
+      message: "Comment deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error deleting comment:", error);
     return res.status(500).json({
       success: false,
       message: "Internal server error",
