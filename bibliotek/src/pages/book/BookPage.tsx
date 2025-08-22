@@ -6,6 +6,7 @@ import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/Loading
 import { useBookDetails } from "@/hooks/bookDetails/useBookDetails";
 import { BookDetails } from "./components/BookDetails/BookDetails";
 import { SimilarBooks } from "./components/SimilarBooks/SimilarBooks";
+import { CommentsContainer } from "./components/Comments/CommentsContainer";
 import styles from "./BookPage.module.css";
 
 export function BookPage() {
@@ -26,6 +27,7 @@ export function BookPage() {
             <>
               <BookDetails book={book} />
               <SimilarBooks />
+              <CommentsContainer />
             </>
           )
         )}

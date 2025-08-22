@@ -1,0 +1,19 @@
+.comment-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.comment-post-date {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0.2;
+}
+.read-more-button {
+  font-size: 1.3rem;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  color: #7efc00cc;
+  cursor: pointer;
+}
