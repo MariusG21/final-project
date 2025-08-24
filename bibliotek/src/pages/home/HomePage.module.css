@@ -1,4 +1,7 @@
 .home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
   margin-top: 9.25rem;
   padding: 2rem 2rem 2rem 26rem;
   width: 100%;

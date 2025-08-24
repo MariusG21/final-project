@@ -4,12 +4,15 @@ import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { ErrorMessage } from "@/components/InfoMessages/ErrorMessage/ErrorMessage";
 import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/LoadingMessage";
 import { InfoMessage } from "@/components/InfoMessages/InfoMessage/InfoMessage";
+import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
 import { useBooks } from "@/hooks/books/useBooks";
 import { BooksGrid } from "./components/BooksGrid";
+import { Pagination } from "./components/Pagination";
 import styles from "./HomePage.module.css";
 
 export function HomePage() {
-  const { isLoading, error, books } = useBooks();
+  const { isLoading, error, books, paginationActions, pagination, search } =
+    useBooks();
   return (
     <>
       <TitleAndFavicon />
@@ -23,7 +26,18 @@ export function HomePage() {
         ) : books.length === 0 ? (
           <InfoMessage message="No books available" />
         ) : (
-          <BooksGrid books={books} />
+          <>
+            <BooksGrid books={books} />
+            {!search && pagination && (
+              <>
+                <SeparatorLine marginBottom={-2} />
+                <Pagination
+                  pagination={pagination}
+                  paginationActions={paginationActions}
+                />
+              </>
+            )}
+          </>
         )}
       </main>
     </>

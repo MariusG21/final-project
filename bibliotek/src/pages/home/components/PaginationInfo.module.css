@@ -1,0 +1,8 @@
+.pagination-info {
+  font-size: 1.4rem;
+  color: #324f8f;
+  font-weight: 700;
+  & .highlight {
+    color: #7fa4f4;
+  }
+}
