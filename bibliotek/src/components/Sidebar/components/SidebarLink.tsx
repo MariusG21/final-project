@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import type { LucideIcon } from "lucide-react";
-import styles from "./SidebarLink.module.css";
 import type { ReactNode } from "react";
+import styles from "./SidebarLink.module.css";
 
 type SidebarLinkProps = {
   label: string;
@@ -17,7 +17,12 @@ export function SidebarLink({
   children,
 }: SidebarLinkProps) {
   return (
-    <NavLink to={to} className={styles["links"]}>
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        isActive ? `${styles["links"]} ${styles["active"]}` : styles["links"]
+      }
+    >
       <div className={styles["links-icons"]}>
         <Icon />
       </div>

@@ -30,6 +30,12 @@
     margin-top: 0.3rem;
     margin-left: auto;
   }
+  &.active {
+    color: #ffffff;
+    .links-icons {
+      background-image: none;
+    }
+  }
 }
 .links-icons {
   height: 100%;
