@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const { id: targetId, search } = req.query;
+    const { id: targetId, search, page = 1, limit = 20 } = req.query;
 
     if (targetId) {
       const targetBook = await Book.findByPk(targetId);
@@ -47,15 +47,26 @@ router.get("/", async (req, res) => {
       });
     }
 
-    const books = await Book.findAll({
+    const pageNum = Number(page);
+    const limitNum = Number(limit);
+    const offset = (pageNum - 1) * limitNum;
+
+    const { count, rows } = await Book.findAndCountAll({
       attributes: {
         exclude: ["description", "publishedYear", "genre", "copiesSold"],
       },
-      limit: 20,
+      limit: limitNum,
+      offset,
     });
     return res.status(200).json({
       success: true,
-      data: books,
+      data: rows,
+      pagination: {
+        totalBooks: count,
+        page: pageNum,
+        limit: limitNum,
+        totalPages: Math.ceil(count / limitNum),
+      },
     });
   } catch (error) {
     console.log("Error in Get /api/books:" + error);
