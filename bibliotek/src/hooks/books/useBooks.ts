@@ -18,7 +18,7 @@ export function useBooks() {
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get("search");
   const page = searchParams.get("page") ?? "1";
-  const limit = searchParams.get("limit") ?? "5";
+  const limit = searchParams.get("limit") ?? "10";
 
   const fetchBooks = useCallback(
     async (retry = false) => {
