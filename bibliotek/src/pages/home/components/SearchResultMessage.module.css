@@ -1,0 +1,11 @@
+.search-result-message {
+  width: 100%;
+  font-size: 1.4rem;
+  text-align: center;
+  line-height: 1;
+  color: #324f8f;
+  font-weight: 700;
+  & .highlight {
+    color: #7fa4f4;
+  }
+}

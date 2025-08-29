@@ -6,6 +6,7 @@ import { LoadingMessage } from "@/components/InfoMessages/LoadingMessage/Loading
 import { InfoMessage } from "@/components/InfoMessages/InfoMessage/InfoMessage";
 import { SeparatorLine } from "@/components/SeparatorLine/SeparatorLine";
 import { useBooks } from "@/hooks/books/useBooks";
+import { SearchResultMessage } from "./components/SearchResultMessage";
 import { BooksGrid } from "./components/BooksGrid";
 import { Pagination } from "./components/Pagination";
 import styles from "./HomePage.module.css";
@@ -27,10 +28,13 @@ export function HomePage() {
           <InfoMessage message="No books available" />
         ) : (
           <>
+            {search && (
+              <SearchResultMessage search={search} resultCount={books.length} />
+            )}
             <BooksGrid books={books} />
             {!search && pagination && (
               <>
-                <SeparatorLine marginBottom={-2} />
+                <SeparatorLine />
                 <Pagination
                   pagination={pagination}
                   paginationActions={paginationActions}
